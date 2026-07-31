@@ -1,0 +1,38 @@
+---
+import "@styles/global.css";
+import Header from "@components/nav/Header.astro";
+import Footer from "@components/Footer.astro";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Triangulated Studio</title>
+  </head>
+
+  <body class="flex antialiased">
+    <a
+      href="#main-content"
+      class="fixed left-4 top-4 z-100 translate-y-[-200%] rounded-md bg-white px-4 py-2
+         font-semibold text-black shadow-lg transition-transform
+         focus:translate-y-0 focus:outline-none focus:ring-2
+         focus:ring-[#e8cf7c] focus:ring-offset-2 focus:ring-offset-[#12051f]"
+    >
+      Skip to main content
+    </a>
+
+    <div class="relative min-h-svh w-full flex-col">
+      <Header />
+
+      <main id="main-content" tabindex="-1" class="flex max-w-375 mx-auto">
+        <slot />
+      </main>
+
+      <Footer />
+    </div>
+  </body>
+</html>

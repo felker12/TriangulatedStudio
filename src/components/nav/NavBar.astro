@@ -1,0 +1,110 @@
+---
+//src/components/nav/NavBar.astro
+import { navLinks } from "@data/nav";
+import NavItem from "@components/nav/NavItem.astro";
+import ProjectDropdown from "@components/nav/ProjectDropdown.astro";
+
+const currentPath = Astro.url.pathname;
+---
+
+<nav
+  aria-label="Primary navigation"
+  class="flex min-h-18 justify-end gap-4
+      px-4 py-4 sm:px-6 lg:px-8"
+>
+  <!-- Mobile menu toggle -->
+  <input
+    type="checkbox"
+    id="menu-toggle"
+    class="peer sr-only"
+    aria-label="Toggle navigation menu"
+    aria-controls="primary-navigation-links"
+    aria-expanded="false"
+  />
+
+  <label
+    for="menu-toggle"
+    aria-label="Toggle navigation menu"
+    class="relative z-30 flex cursor-pointer flex-col gap-1.5 md:hidden
+        peer-checked:[&>span:nth-child(1)]:translate-y-2
+        peer-checked:[&>span:nth-child(1)]:rotate-45
+        peer-checked:[&>span:nth-child(2)]:opacity-0
+        peer-checked:[&>span:nth-child(3)]:-translate-y-2
+        peer-checked:[&>span:nth-child(3)]:-rotate-45"
+  >
+    <span class="h-0.5 w-6 bg-white transition-all duration-300"></span>
+    <span class="h-0.5 w-6 bg-white transition-all duration-300"></span>
+    <span class="h-0.5 w-6 bg-white transition-all duration-300"></span>
+  </label>
+
+  <!-- Navigation links -->
+  <ul
+    id="primary-navigation-links"
+    class="absolute inset-x-0 top-full flex max-h-0 w-full flex-col
+        overflow-hidden border-b border-transparent
+        bg-[rgba(1,9,17,0.94)] p-0 opacity-0 backdrop-blur-xl
+        transition-[max-height,opacity,padding,border-color] duration-300 ease-in-out
+        peer-checked:max-h-128
+        peer-checked:py-4
+        peer-checked:opacity-100
+        md:static md:flex md:w-auto md:max-h-none md:flex-row md:items-center
+        md:gap-6 md:overflow-visible md:border-0 md:bg-transparent
+        md:p-0 md:opacity-100 md:backdrop-blur-none"
+  >
+    {
+      navLinks.map((link) => {
+        const isActive =
+          link.href === "/"
+            ? currentPath === "/"
+            : currentPath.startsWith(link.href);
+
+        const hasChildren = (link.children?.length ?? 0) > 0;
+        const isContact = link.href === "/contact";
+
+        return (
+          <li class="group relative px-4 py-2 md:p-0">
+            {isContact ? (
+              <a
+                href={link.href}
+                aria-label={link.ariaLabel}
+                aria-current={isActive ? "page" : undefined}
+                class:list={[
+                  `relative inline-flex w-full items-center justify-center gap-2
+                    overflow-hidden rounded-lg border px-4 py-2.5
+                    font-mono text-xs tracking-wide no-underline
+                    backdrop-blur-md transition-all duration-150
+                    hover:-translate-y-px
+                    hover:border-electric/70
+                    hover:bg-surface-light/60
+                    hover:text-electric
+                    hover:shadow-[0_0_32px_rgba(42,178,255,0.2)]
+                    focus-visible:outline-none
+                    focus-visible:ring-2
+                    focus-visible:ring-blue-soft
+                    focus-visible:ring-offset-2
+                    focus-visible:ring-offset-slate-950`,
+                  isActive
+                    ? `border-electric/60 bg-surface-light/50
+                        text-blue-soft shadow-[0_0_24px_rgba(42,178,255,0.16)]`
+                    : `border-electric/20 bg-surface-light/30
+                        text-blue-soft`,
+                ]}
+              >
+                {link.label}
+              </a>
+            ) : (
+              <NavItem {...link} isActive={isActive} />
+            )}
+
+            {hasChildren && (
+              <ProjectDropdown
+                pathname={currentPath}
+                projectLinks={link.children ?? []}
+              />
+            )}
+          </li>
+        );
+      })
+    }
+  </ul>
+</nav>

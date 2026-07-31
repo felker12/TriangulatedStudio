@@ -1,0 +1,84 @@
+---
+import { Image } from "astro:assets";
+import logoMark from "@assets/Logo_NoBackground.png";
+---
+
+<section class="relative isolate overflow-hidden px-5">
+  <div
+    aria-hidden="true"
+    class="absolute right-0 top-0 -z-10 h-150 w-150
+           rounded-full bg-electric/8 blur-3xl"
+  >
+  </div>
+
+  <div
+    class="mx-auto grid min-h-[calc(100svh-5rem)] max-w-7xl
+              items-center gap-16 py-20 lg:grid-cols-[1.12fr_0.88fr]"
+  >
+    <div class="max-w-3xl">
+      <p class="mb-6 font-mono text-xs uppercase tracking-[0.24em] text-cyan">
+        Independent digital studio
+      </p>
+
+      <h1
+        class="font-display text-5xl font-medium leading-[0.98]
+                 tracking-[-0.045em] text-text
+                 sm:text-6xl lg:text-7xl"
+      >
+        Digital experiences,
+        <span class="text-text-muted">designed from every angle.</span>
+      </h1>
+
+      <p class="mt-8 max-w-xl text-lg leading-8 text-text-muted">
+        Triangulated Studio brings strategy, design, and engineering together to
+        create focused digital work for growing businesses.
+      </p>
+
+      <div class="mt-10 flex flex-wrap items-center gap-4">
+        <a
+          href="/projects"
+          class="inline-flex items-center gap-2 rounded-full
+                 bg-text px-6 py-3 text-sm font-semibold text-void
+                 transition-transform duration-200 hover:-translate-y-0.5"
+        >
+          View selected work
+        </a>
+
+        <a
+          href="/contact"
+          class="inline-flex items-center gap-2 rounded-full
+                 border border-white/15 px-6 py-3 text-sm font-semibold
+                 text-text transition-colors duration-200
+                 hover:border-cyan/45 hover:bg-white/4"
+        >
+          Start a project
+        </a>
+      </div>
+    </div>
+
+    <div class="relative mx-auto w-full max-w-lg">
+      <div
+        aria-hidden="true"
+        class="absolute inset-1/4 rounded-full bg-electric/15 blur-3xl"
+      >
+      </div>
+
+      <div
+        class="relative border border-white/8 bg-white/2.5
+               p-10 backdrop-blur-sm sm:p-16"
+        style="clip-path: polygon(0 0, calc(100% - 36px) 0, 100% 36px, 100% 100%, 36px 100%, 0 calc(100% - 36px));"
+      >
+        <Image
+          src={logoMark}
+          alt="Triangulated Studio geometric mark"
+          widths={[320, 480, 640]}
+          sizes="(max-width: 1024px) 70vw, 34vw"
+          loading="eager"
+          format="webp"
+          quality={90}
+          class="relative mx-auto w-full max-w-sm object-contain bg-void rounded-3xl"
+        />
+      </div>
+    </div>
+  </div>
+</section>

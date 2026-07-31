@@ -1,0 +1,11 @@
+---
+//src/components/nav/ProjectDropDown.astro
+import { type NavLink } from "@data/nav.ts";
+
+interface Props {
+  pathname: string;
+  projectLinks: NavLink[];
+}
+
+const { pathname, projectLinks } = Astro.props;
+---

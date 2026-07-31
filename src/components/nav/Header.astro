@@ -1,0 +1,40 @@
+---
+// src/components/nav/Header.astro
+import { Image } from "astro:assets";
+import logoImage from "@assets/Logo_NoBackground.png";
+import NavBar from "@components/nav/NavBar.astro";
+---
+
+<header
+  class="relative z-40 border-b border-white/8
+         bg-void/75 px-5 backdrop-blur-xl text-text-muted"
+>
+  <div class="mx-auto flex min-h-20 max-w-7xl items-center justify-between">
+    <a
+      href="/"
+      aria-label="Triangulated Studio home"
+      class="flex transition-transform duration-200 hover:scale-105"
+    >
+      <Image
+        src={logoImage}
+        alt="Triangulated Studio's logo"
+        width={60}
+        height={60}
+        densities={[1.5, 2]}
+        loading="eager"
+        format="webp"
+        quality={75}
+        class="rounded-lg"
+      />
+
+      <span
+        class="whitespace-nowrap text-xl tracking-wide
+          transition-colors duration-200 max-sm:text-sm mt-5 text-text"
+      >
+        Triangulated Studio
+      </span>
+    </a>
+
+    <NavBar />
+  </div>
+</header>

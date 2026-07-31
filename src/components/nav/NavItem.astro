@@ -1,0 +1,56 @@
+---
+//src/components/nav/NavItem.astro
+import { type NavLink } from "@data/nav.ts";
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  href: string;
+  label: string;
+  ariaLabel: string;
+  children?: NavLink[];
+  isActive: boolean;
+}
+
+const { href, label, ariaLabel, isActive, children } = Astro.props;
+
+const hasChildren = (children?.length ?? 0) > 0;
+---
+
+<a
+  href={href}
+  aria-label={ariaLabel}
+  aria-current={isActive ? "page" : undefined}
+  class:list={[
+    `relative inline-flex items-center gap-1
+    rounded-sm font-medium text-sm tracking-wide
+    no-underline transition-colors duration-150
+
+    after:absolute after:inset-x-0 after:-bottom-1.5 after:h-px
+    after:transition-transform after:duration-150
+
+    focus-visible:outline-none
+    focus-visible:ring-2
+    focus-visible:ring-blue-soft
+    focus-visible:ring-offset-4
+    focus-visible:ring-offset-slate-950`,
+
+    isActive
+      ? `text-electric
+        after:origin-left after:scale-x-100`
+      : `hover:text-blue-soft`,
+  ]}
+>
+  {label}
+
+  {
+    hasChildren && (
+      <Icon
+        name="mdi:chevron-down"
+        size={16}
+        color="currentColor"
+        class="transition-transform duration-200 hidden md:block
+        group-hover:rotate-180 group-focus-within:rotate-180"
+      />
+    )
+  }
+</a>
