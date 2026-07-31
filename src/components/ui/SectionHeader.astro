@@ -1,0 +1,54 @@
+---
+import Eyebrow from "./Eyebrow.astro";
+
+interface Props {
+  eyebrow: string;
+  title: string;
+  muted?: string;
+  mutedBlock?: boolean;
+  description?: string;
+  id?: string;
+  maxWidth?: string;
+}
+
+const {
+  eyebrow,
+  title,
+  muted,
+  mutedBlock = false,
+  description,
+  id,
+  maxWidth = "max-w-2xl",
+} = Astro.props;
+---
+
+<div>
+  <Eyebrow text={eyebrow} />
+
+  <h2
+    id={id}
+    class:list={[
+      maxWidth,
+      `font-display text-4xl font-medium tracking-[-0.035em]
+       text-text sm:text-5xl lg:text-6xl`,
+    ]}
+  >
+    {title}
+
+    {
+      muted && (
+        <span
+          class:list={["text-text-muted", mutedBlock ? "block" : "ml-[0.2em]"]}
+        >
+          {muted}
+        </span>
+      )
+    }
+  </h2>
+
+  {
+    description && (
+      <p class="mt-6 max-w-xl leading-7 text-text-muted">{description}</p>
+    )
+  }
+</div>

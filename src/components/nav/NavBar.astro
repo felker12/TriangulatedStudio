@@ -40,7 +40,7 @@ const currentPath = Astro.url.pathname;
   <!-- Navigation links -->
   <ul
     id="primary-navigation-links"
-    class="absolute inset-x-0 top-full flex max-h-0 w-full flex-col
+    class="absolute inset-x-0 top-full flex max-h-0 flex-col
         overflow-hidden border-b border-transparent
         bg-[rgba(1,9,17,0.94)] p-0 opacity-0 backdrop-blur-xl
         transition-[max-height,opacity,padding,border-color] duration-300 ease-in-out
@@ -62,14 +62,14 @@ const currentPath = Astro.url.pathname;
         const isContact = link.href === "/contact";
 
         return (
-          <li class="group relative px-4 py-2 md:p-0">
+          <li class="group relative flex px-4 py-2 md:block md:p-0">
             {isContact ? (
               <a
                 href={link.href}
                 aria-label={link.ariaLabel}
                 aria-current={isActive ? "page" : undefined}
                 class:list={[
-                  `relative inline-flex w-full items-center justify-center gap-2
+                  `relative inline-flex items-center justify-center gap-2
                     overflow-hidden rounded-lg border px-4 py-2.5
                     font-mono text-xs tracking-wide no-underline
                     backdrop-blur-md transition-all duration-150

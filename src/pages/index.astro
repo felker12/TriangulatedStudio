@@ -1,9 +1,28 @@
 ---
-//src/pages/index.astro
 import Layout from "@layouts/Layout.astro";
-import Hero from "@components/Hero.astro";
+
+import DesignPhilosophy from "@components/home/DesignPhilosophy.astro";
+import FinalCTA from "@components/home/FinalCTA.astro";
+import Hero from "@components/home/Hero.astro";
+import Process from "@components/home/Process.astro";
+import SelectedWork from "@components/home/SelectedWork.astro";
+import ServicesOverview from "@components/home/ServicesOverview.astro";
+import SoftwareEngineering from "@components/home/SoftwareEngineering.astro";
+import WhyTriangulated from "@components/home/WhyTriangulated.astro";
 ---
 
-<Layout>
+<Layout
+  title="Web Design, Software Development & Brand Studio"
+  description="Triangulated Studio connects strategy, design, and engineering to create thoughtful websites, visual identities, and custom software."
+  image="/opengraph.jpg"
+  imageAlt="Triangulated Studio geometric logo"
+>
   <Hero />
+  <SelectedWork />
+  <SoftwareEngineering />
+  <ServicesOverview />
+  <DesignPhilosophy />
+  <Process />
+  <WhyTriangulated />
+  <FinalCTA />
 </Layout>

@@ -1,0 +1,116 @@
+---
+import { Image } from "astro:assets";
+
+import IconButton from "@components/ui/IconButton.astro";
+import LinkButton from "@components/ui/LinkButton.astro";
+import Section from "@components/ui/Section.astro";
+import SectionHeader from "@components/ui/SectionHeader.astro";
+import Tag from "@components/ui/Tag.astro";
+
+import { featuredPortfolioProjects } from "@data/projects";
+
+const project = featuredPortfolioProjects[0];
+---
+
+{
+  project && (
+    <Section
+      id="selected-work"
+      labelledBy="selected-work-title"
+      background="midnight"
+      borderTop
+      borderBottom
+    >
+      <div class="mb-12 flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
+        <SectionHeader
+          id="selected-work-title"
+          eyebrow="Selected work"
+          title="Professional experience,"
+          muted="shown with context."
+        />
+
+        <LinkButton href="/projects" label="View all projects" />
+      </div>
+
+      <article class="group grid overflow-hidden border border-white/8 bg-white/2 lg:grid-cols-[1.35fr_0.65fr]">
+        <a
+          href={`/projects/${project.slug}`}
+          aria-label={`View the ${project.title} project`}
+          class="relative block min-h-80 overflow-hidden bg-surface lg:min-h-140"
+        >
+          <Image
+            src={project.image}
+            alt={project.imageAlt}
+            widths={[640, 960, 1280, 1600]}
+            sizes="(max-width: 1024px) 100vw, 65vw"
+            loading="lazy"
+            format="webp"
+            quality={85}
+            class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.025]"
+          />
+
+          <div
+            aria-hidden="true"
+            class="absolute inset-0 bg-linear-to-t from-void/45 via-transparent to-transparent"
+          />
+        </a>
+
+        <div class="flex flex-col justify-between p-8 sm:p-10 lg:p-12">
+          <div>
+            <div class="mb-8 flex flex-wrap items-center justify-between gap-4">
+              <span class="font-mono text-xs uppercase tracking-[0.18em] text-cyan">
+                Employment work / {project.category}
+              </span>
+
+              <span class="text-xs uppercase tracking-[0.18em] text-text-muted">
+                {project.year}
+              </span>
+            </div>
+
+            <h3 class="font-display text-3xl font-medium tracking-tight text-text sm:text-4xl">
+              {project.title}
+            </h3>
+
+            <p class="mt-5 max-w-md leading-7 text-text-muted">
+              {project.summary}
+            </p>
+
+            <dl class="mt-8 grid gap-5 border-y border-white/8 py-6 sm:grid-cols-2">
+              <div>
+                <dt class="font-mono text-[0.65rem] uppercase tracking-[0.18em] text-cyan">
+                  Role
+                </dt>
+                <dd class="mt-2 text-sm text-text">{project.role}</dd>
+              </div>
+
+              <div>
+                <dt class="font-mono text-[0.65rem] uppercase tracking-[0.18em] text-cyan">
+                  Organization
+                </dt>
+                <dd class="mt-2 text-sm text-text">{project.organization}</dd>
+              </div>
+            </dl>
+
+            <p class="mt-6 text-sm leading-6 text-text-muted">
+              {project.attribution}
+            </p>
+
+            <div aria-label="Project technologies" class="mt-8 flex flex-wrap gap-2">
+              {project.technologies.map((technology) => <Tag label={technology} />)}
+            </div>
+          </div>
+
+          <div class="mt-12 flex items-center gap-3">
+            <span class="text-sm font-semibold text-text">Explore project</span>
+
+            <IconButton
+              href={`/projects/${project.slug}`}
+              icon="mdi:arrow-top-right"
+              ariaLabel={`Explore the ${project.title} project`}
+            />
+          </div>
+        </div>
+      </article>
+    </Section>
+  )
+}

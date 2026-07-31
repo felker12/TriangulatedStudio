@@ -1,0 +1,85 @@
+---
+import { Image } from "astro:assets";
+
+import Eyebrow from "@components/ui/Eyebrow.astro";
+import LinkButton from "@components/ui/LinkButton.astro";
+
+import logoMark from "@assets/Logo_NoBackground.png";
+---
+
+<section
+  class="relative isolate overflow-hidden px-5"
+  aria-labelledby="hero-title"
+>
+  <div
+    class="mx-auto grid max-w-360 items-center gap-16
+           px-4 py-20 sm:py-24
+           lg:min-h-[calc(100svh-5rem)]
+           lg:grid-cols-[1.08fr_0.92fr]
+           xl:gap-24"
+  >
+    <div class="max-w-3xl">
+      <Eyebrow text="Independent digital studio" />
+
+      <h1
+        id="hero-title"
+        class="font-display text-5xl font-medium leading-[0.98]
+               tracking-[-0.045em] text-text
+               sm:text-6xl lg:text-7xl"
+      >
+        Digital experiences,
+        <span class="text-text-muted"> designed from every angle. </span>
+      </h1>
+
+      <p class="mt-8 max-w-xl text-lg leading-8 text-text-muted">
+        Triangulated Studio brings strategy, design, and engineering together to
+        create focused digital work for growing businesses.
+      </p>
+
+      <div class="mt-10 flex flex-wrap items-center gap-4">
+        <LinkButton
+          href="/projects"
+          label="View selected work"
+          variant="primary"
+          marginTop={false}
+        />
+
+        <LinkButton
+          href="/contact"
+          label="Start a project"
+          variant="secondary"
+          marginTop={false}
+        />
+      </div>
+    </div>
+
+    <div class="relative mx-auto w-full max-w-lg">
+      <div aria-hidden="true" class="absolute inset-1/4 bg-electric/8 blur-3xl">
+      </div>
+
+      <div
+        class="relative border border-white/9
+               bg-white/[0.018] p-8 sm:p-10"
+        style="clip-path: polygon(
+          0 0,
+          calc(100% - 36px) 0,
+          100% 36px,
+          100% 100%,
+          36px 100%,
+          0 calc(100% - 36px)
+        );"
+      >
+        <Image
+          src={logoMark}
+          alt="Triangulated Studio geometric mark"
+          widths={[400, 600, 800]}
+          sizes="(max-width: 1024px) 76vw, 38vw"
+          loading="eager"
+          format="webp"
+          quality={90}
+          class="relative mx-auto w-full max-w-md object-contain"
+        />
+      </div>
+    </div>
+  </div>
+</section>

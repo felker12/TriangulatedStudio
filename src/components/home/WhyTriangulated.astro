@@ -1,0 +1,66 @@
+---
+import Section from "@components/ui/Section.astro";
+import SectionHeader from "@components/ui/SectionHeader.astro";
+
+const principles = [
+  {
+    number: "01",
+    title: "Purpose over trends",
+    description:
+      "Every visual and technical decision should support a real objective. Clarity, usefulness, and lasting value matter more than temporary novelty.",
+  },
+  {
+    number: "02",
+    title: "Connected thinking",
+    description:
+      "Strategy, design, content, and engineering are not isolated phases. Treating them as one system creates stronger, more cohesive work.",
+  },
+  {
+    number: "03",
+    title: "Built to last",
+    description:
+      "Strong foundations make future growth easier. Maintainable digital products can evolve without being rebuilt from the ground up.",
+  },
+];
+---
+
+<Section
+  id="why-triangulated"
+  labelledBy="why-triangulated-title"
+  background="midnight"
+  borderTop
+  borderBottom
+>
+  <div class="grid gap-14 lg:grid-cols-[0.72fr_1.28fr] lg:gap-24">
+    <SectionHeader
+      id="why-triangulated-title"
+      eyebrow="Built around connection"
+      title="Different perspectives."
+      muted="One clear direction."
+      description="The strongest outcomes appear when every part of a project supports the same purpose."
+      maxWidth="max-w-xl"
+    />
+
+    <div class="border-t border-white/8">
+      {
+        principles.map((principle) => (
+          <article class="grid gap-5 border-b border-white/8 py-9 sm:grid-cols-[4rem_1fr] sm:gap-8">
+            <span class="font-mono text-xs tracking-[0.18em] text-cyan">
+              {principle.number}
+            </span>
+
+            <div>
+              <h3 class="font-display text-2xl font-medium tracking-tight text-text">
+                {principle.title}
+              </h3>
+
+              <p class="mt-4 max-w-2xl leading-7 text-text-muted">
+                {principle.description}
+              </p>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</Section>

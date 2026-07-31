@@ -13,25 +13,27 @@ import NavBar from "@components/nav/NavBar.astro";
     <a
       href="/"
       aria-label="Triangulated Studio home"
-      class="flex transition-transform duration-200 hover:scale-105"
+      class="group flex items-center gap-3"
     >
       <Image
         src={logoImage}
-        alt="Triangulated Studio's logo"
+        alt=""
         width={60}
         height={60}
         densities={[1.5, 2]}
         loading="eager"
         format="webp"
-        quality={75}
-        class="rounded-lg"
+        quality={90}
+        class="object-contain transition-transform duration-300
+           group-hover:scale-105"
       />
 
       <span
-        class="whitespace-nowrap text-xl tracking-wide
-          transition-colors duration-200 max-sm:text-sm mt-5 text-text"
+        class="hidden text-sm font-medium uppercase tracking-[0.16em]
+           text-text sm:block"
       >
-        Triangulated Studio
+        Triangulated
+        <span class="text-electric">Studio</span>
       </span>
     </a>
 

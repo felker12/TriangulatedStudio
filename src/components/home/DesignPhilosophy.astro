@@ -1,0 +1,49 @@
+---
+import Eyebrow from "@components/ui/Eyebrow.astro";
+import Section from "@components/ui/Section.astro";
+---
+
+<Section
+  id="philosophy"
+  labelledBy="philosophy-title"
+  background="surface"
+  borderBottom
+>
+  <div class="grid items-center gap-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-24">
+    <div>
+      <Eyebrow text="How we think" />
+
+      <h2
+        id="philosophy-title"
+        class="max-w-3xl font-display text-4xl font-medium leading-[1.05] tracking-[-0.04em] text-text sm:text-5xl lg:text-6xl"
+      >
+        Great digital work is not created
+        <span class="text-text-muted">from one perspective.</span>
+      </h2>
+    </div>
+
+    <div class="border-l border-white/8 pl-6 sm:pl-10">
+      <p class="text-lg leading-8 text-white-soft">
+        Modern digital experiences demand more than attractive visuals or
+        well-written code.
+      </p>
+
+      <p class="mt-6 leading-7 text-text-muted">
+        Every decision influences the next—from user experience and brand
+        identity to technical architecture and long-term maintainability.
+      </p>
+
+      <p class="mt-6 leading-7 text-text-muted">
+        Triangulated Studio approaches every project through connected
+        perspectives so the result feels intentional, performs reliably, and can
+        grow alongside the organization it supports.
+      </p>
+
+      <div aria-hidden="true" class="mt-10 flex items-center">
+        <span class="h-px flex-1 bg-linear-to-r from-transparent to-cyan/60"
+        ></span>
+        <span class="h-2 w-2 rounded-full bg-cyan"></span>
+      </div>
+    </div>
+  </div>
+</Section>

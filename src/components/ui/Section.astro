@@ -1,0 +1,51 @@
+---
+interface Props {
+  id?: string;
+  labelledBy?: string;
+  background?: "default" | "midnight" | "surface";
+  borderTop?: boolean;
+  borderBottom?: boolean;
+  narrow?: boolean;
+  class?: string;
+  containerClass?: string;
+}
+
+const {
+  id,
+  labelledBy,
+  background = "default",
+  borderTop = false,
+  borderBottom = false,
+  narrow = false,
+  class: className = "",
+  containerClass = "",
+} = Astro.props;
+
+const backgrounds = {
+  default: "bg-void",
+  midnight: "bg-midnight/45",
+  surface: "bg-surface/40",
+};
+---
+
+<section
+  id={id}
+  aria-labelledby={labelledBy}
+  class:list={[
+    "px-5 py-24 sm:py-28 lg:py-36",
+    backgrounds[background],
+    borderTop && "border-t border-white/6",
+    borderBottom && "border-b border-white/6",
+    className,
+  ]}
+>
+  <div
+    class:list={[
+      "mx-auto w-full",
+      narrow ? "max-w-5xl" : "max-w-7xl",
+      containerClass,
+    ]}
+  >
+    <slot />
+  </div>
+</section>

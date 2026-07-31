@@ -17,7 +17,18 @@ export const navLinks: NavLink[] = [
     href: "/projects",
     label: "Projects",
     ariaLabel: "Development Projects",
-    children: [],
+    children: [
+      {
+        href: "/Test1",
+        label: "Test1",
+        ariaLabel: "Test1",
+      },
+      {
+        href: "/Test2",
+        label: "Test2",
+        ariaLabel: "Test2",
+      },
+    ],
   },
   {
     href: "/about",

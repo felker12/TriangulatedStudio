@@ -1,0 +1,102 @@
+---
+import Section from "@components/ui/Section.astro";
+import SectionHeader from "@components/ui/SectionHeader.astro";
+
+const steps = [
+  {
+    number: "01",
+    title: "Strategy",
+    description:
+      "We establish the goals, audience, priorities, and measures of success before making design or technology decisions.",
+  },
+  {
+    number: "02",
+    title: "Identity",
+    description:
+      "We define the visual direction and establish a consistent foundation for how the business communicates.",
+  },
+  {
+    number: "03",
+    title: "Design",
+    description:
+      "We shape clear interfaces and thoughtful experiences around real users and meaningful business objectives.",
+  },
+  {
+    number: "04",
+    title: "Development",
+    description:
+      "We build fast, accessible, and maintainable digital products using technology suited to the project.",
+  },
+  {
+    number: "05",
+    title: "Growth",
+    description:
+      "After launch, we evaluate, refine, and support the work as the business and its needs continue to evolve.",
+  },
+];
+---
+
+<Section id="process" labelledBy="process-title" background="default">
+  <SectionHeader
+    id="process-title"
+    eyebrow="Our process"
+    title="Every point"
+    muted="connects to the next."
+    description="A focused process keeps strategy, design, and development aligned from the first conversation through launch and beyond."
+  />
+
+  <ol class="relative mt-16 grid gap-0 lg:grid-cols-5">
+    <div
+      aria-hidden="true"
+      class="absolute left-[10%] right-[10%] top-5 hidden h-px
+             bg-linear-to-r from-transparent via-border to-transparent
+             lg:block"
+    >
+    </div>
+
+    {
+      steps.map((step, index) => (
+        <li
+          class:list={[
+            `group relative border-l border-white/8
+             pb-10 pl-8 last:pb-0
+             lg:border-l-0 lg:pb-0 lg:pl-0`,
+            index !== steps.length - 1 &&
+              "lg:border-r lg:border-white/6 lg:pr-6",
+            index !== 0 && "lg:pl-6",
+          ]}
+        >
+          <div
+            class="absolute left-[-0.3rem] top-0 h-2.5 w-2.5
+                   rounded-full bg-cyan shadow-[0_0_18px_rgba(85,210,247,0.45)]
+                   transition-transform duration-300
+                   group-hover:scale-125
+                   lg:relative lg:left-auto lg:top-auto lg:z-10
+                   lg:mb-10 lg:h-10 lg:w-10
+                   lg:border lg:border-cyan/40
+                   lg:bg-void lg:shadow-none"
+          >
+            <span
+              class="hidden h-full w-full items-center justify-center
+                     font-mono text-[0.65rem] text-cyan lg:flex"
+            >
+              {step.number}
+            </span>
+          </div>
+
+          <span class="font-mono text-xs tracking-[0.18em] text-cyan lg:hidden">
+            {step.number}
+          </span>
+
+          <h3 class="mt-3 font-display text-xl font-medium text-text lg:mt-0">
+            {step.title}
+          </h3>
+
+          <p class="mt-3 text-sm leading-6 text-text-muted">
+            {step.description}
+          </p>
+        </li>
+      ))
+    }
+  </ol>
+</Section>

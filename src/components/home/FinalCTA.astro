@@ -1,0 +1,88 @@
+---
+import Eyebrow from "@components/ui/Eyebrow.astro";
+import LinkButton from "@components/ui/LinkButton.astro";
+import Section from "@components/ui/Section.astro";
+---
+
+<Section
+  id="start-a-project"
+  labelledBy="final-cta-title"
+  background="surface"
+  class="overflow-hidden"
+>
+  <div class="relative grid items-end gap-12 lg:grid-cols-[1fr_auto] lg:gap-20">
+    <div class="max-w-4xl">
+      <Eyebrow text="Start a conversation" />
+
+      <h2
+        id="final-cta-title"
+        class="font-display text-5xl font-medium leading-[0.98] tracking-[-0.045em] text-text sm:text-6xl lg:text-7xl"
+      >
+        Ready to connect{" "}
+        <span class="text-text-muted">the next point?</span>
+      </h2>
+
+      <p class="mt-7 max-w-xl text-lg leading-8 text-text-muted">
+        Every strong project begins with a clear conversation. Share what you
+        are building, where you are heading, and what needs to connect.
+      </p>
+    </div>
+
+    <div class="mt-8 flex items-center gap-4">
+      <a href="/contact" class="group inline-flex items-center gap-4">
+        <span
+          class="h-px w-16 bg-linear-to-r from-cyan/20 to-cyan
+           transition-all duration-300
+           group-hover:w-20"
+        ></span>
+
+        <span
+          class="relative flex h-4 w-4 items-center justify-center overflow-hidden"
+        >
+          <!-- Dot -->
+          <span
+            class="flex h-3 w-3 items-center justify-center
+             rounded-full border border-cyan/50 transition-all duration-300
+             group-hover:scale-0
+             group-hover:opacity-0"
+          >
+            <span class="h-1.5 w-1.5 rounded-full bg-cyan"></span>
+          </span>
+
+          <!-- Arrow -->
+          <span
+            class="absolute opacity-0
+             transition-all duration-300
+             group-hover:translate-x-0
+             group-hover:opacity-100 text-cyan text-2xl"
+          >
+            {">"}
+          </span>
+        </span>
+
+        <span
+          class="font-mono text-xs uppercase tracking-[0.18em]
+           text-cyan transition-colors duration-300
+           group-hover:text-electric"
+        >
+          Let's build something thoughtful.
+        </span>
+      </a>
+    </div>
+
+    <div class="lg:pb-2">
+      <LinkButton
+        href="/contact"
+        label="Start a project"
+        variant="primary"
+        marginTop={false}
+      />
+    </div>
+
+    <div
+      aria-hidden="true"
+      class="absolute -bottom-12 right-0 -z-10 h-44 w-44 rotate-45 border border-cyan/8"
+    >
+    </div>
+  </div>
+</Section>

@@ -1,0 +1,32 @@
+---
+interface Props {
+  href: string;
+  label: string;
+  variant?: "primary" | "secondary";
+  marginTop?: boolean;
+}
+
+const { href, label, variant = "secondary", marginTop = true } = Astro.props;
+---
+
+<a
+  href={href}
+  class:list={[
+    `group inline-flex w-fit self-start items-center gap-2
+     rounded-full border px-6 py-3
+     text-sm font-semibold
+     transition-all duration-300
+     hover:-translate-y-0.5`,
+
+    marginTop && "mt-8",
+
+    variant === "primary"
+      ? `border-cyan border bg-line-soft/60 text-cyan
+         hover:border-electric hover:bg-line-soft/20 hover:text-blue-soft`
+      : `border-border bg-surface-light/30 text-text
+         hover:border-electric hover:bg-surface/80
+         hover:text-electric`,
+  ]}
+>
+  {label}
+</a>

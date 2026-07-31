@@ -1,0 +1,85 @@
+---
+import { Icon } from "astro-icon/components";
+
+import IconButton from "@components/ui/IconButton.astro";
+import LinkButton from "@components/ui/LinkButton.astro";
+import Section from "@components/ui/Section.astro";
+import SectionHeader from "@components/ui/SectionHeader.astro";
+
+const services = [
+  {
+    number: "01",
+    title: "Web Design & Development",
+    description:
+      "Fast, focused websites that connect strong visual design with thoughtful technical execution.",
+    icon: "mdi:monitor-cellphone",
+    href: "/services/web-design-development",
+  },
+  {
+    number: "02",
+    title: "Brand Identity",
+    description:
+      "Cohesive visual systems that help businesses communicate clearly and remain recognizable.",
+    icon: "mdi:vector-triangle",
+    href: "/services/brand-identity",
+  },
+  {
+    number: "03",
+    title: "Custom Software",
+    description:
+      "Purpose-built applications, internal tools, APIs, and prototypes designed around real operational needs.",
+    icon: "mdi:code-braces",
+    href: "/services/custom-software",
+  },
+];
+---
+
+<Section labelledBy="services-title" background="midnight" borderTop borderBottom>
+  <div class="grid gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:gap-20">
+    <div>
+      <SectionHeader
+        id="services-title"
+        eyebrow="What we do"
+        title="Connected disciplines."
+        muted="One focused studio."
+        mutedBlock
+        description="Strategy, design, and technology work best when they are considered together. Every project is approached as one connected system."
+        maxWidth="max-w-lg"
+      />
+
+      <LinkButton href="/services" label="Explore services" />
+    </div>
+
+    <div class="border-t border-white/8">
+      {
+        services.map((service) => (
+          <article class="group grid gap-5 border-b border-white/8 py-8 sm:grid-cols-[3rem_3.5rem_1fr_auto] sm:items-start sm:gap-6">
+            <span class="font-mono text-xs tracking-[0.16em] text-cyan">
+              {service.number}
+            </span>
+
+            <div class="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 text-text-muted transition-colors duration-200 group-hover:border-cyan/40 group-hover:text-cyan">
+              <Icon name={service.icon} size={21} />
+            </div>
+
+            <div>
+              <h3 class="font-display text-xl font-medium text-text sm:text-2xl">
+                {service.title}
+              </h3>
+
+              <p class="mt-3 max-w-xl leading-7 text-text-muted">
+                {service.description}
+              </p>
+            </div>
+
+            <IconButton
+              href={service.href}
+              icon="mdi:arrow-top-right"
+              ariaLabel={`Learn more about ${service.title}`}
+            />
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</Section>

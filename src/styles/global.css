@@ -27,6 +27,10 @@
   --spacing-section-lg: 10rem;
 
   --radius-panel: 1.25rem;
+
+  --font-display: "Manrope Variable", sans-serif;
+  --font-body: "Manrope Variable", sans-serif;
+  --font-mono: "JetBrains Mono Variable", monospace;
 }
 
 html {
@@ -37,18 +41,7 @@ html {
 body {
   margin: 0;
   min-width: 320px;
-  background:
-    radial-gradient(
-      circle at 75% 10%,
-      rgb(23 139 220 / 0.1),
-      transparent 32rem
-    ),
-    radial-gradient(
-      circle at 10% 70%,
-      rgb(85 210 247 / 0.04),
-      transparent 28rem
-    ),
-    var(--color-void);
+  background-color: var(--color-void);
   color: var(--color-text);
   font-family: var(--font-body);
 }
