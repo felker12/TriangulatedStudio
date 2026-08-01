@@ -1,0 +1,68 @@
+---
+import Eyebrow from "@components/ui/Eyebrow.astro";
+import LinkButton from "@components/ui/LinkButton.astro";
+import Section from "@components/ui/Section.astro";
+
+import type { ProjectDetail } from "@data/projects/projectDetails";
+
+interface Props {
+  project: ProjectDetail;
+}
+
+const { project } = Astro.props;
+---
+
+<Section
+  id="project-cta"
+  labelledBy="project-cta-title"
+  background="surface"
+  class="overflow-hidden"
+>
+  <div class="relative grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end lg:gap-20">
+    <div class="max-w-4xl">
+      <Eyebrow text="Explore what comes next" />
+
+      <h2
+        id="project-cta-title"
+        class="font-display text-4xl font-medium tracking-[-0.04em]
+               text-text sm:text-5xl lg:text-6xl"
+      >
+        Need something with
+        <span class="text-text-muted">
+          similar depth?
+        </span>
+      </h2>
+
+      <p class="mt-6 max-w-2xl text-lg leading-8 text-text-muted">
+        {project.packageId === "custom-development"
+          ? "Custom software projects are scoped around the workflow, users, and technical requirements involved."
+          : "Website packages provide a practical starting point, while custom scope is available when the project needs more."}
+      </p>
+    </div>
+
+    <div class="flex flex-wrap gap-4">
+      <LinkButton
+        href="/portfolio"
+        label="Back to portfolio"
+        variant="secondary"
+        marginTop={false}
+      />
+
+      <LinkButton
+        href={
+          project.packageId === "custom-development"
+            ? "/services#custom-development"
+            : "/services#website-packages"
+        }
+        label="Explore services"
+        variant="primary"
+        marginTop={false}
+      />
+    </div>
+
+    <div
+      aria-hidden="true"
+      class="absolute -bottom-12 right-0 -z-10 h-44 w-44 rotate-45 border border-cyan/8"
+    ></div>
+  </div>
+</Section>

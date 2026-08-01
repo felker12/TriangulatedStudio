@@ -1,0 +1,35 @@
+---
+import Section from "@components/ui/Section.astro";
+import SectionHeader from "@components/ui/SectionHeader.astro";
+import PackageCard from "@components/services/PackageCard.astro";
+
+import { websitePackages } from "@data/services/packages";
+---
+
+<Section
+  id="website-packages"
+  labelledBy="website-packages-title"
+  background="default"
+>
+  <SectionHeader
+    id="website-packages-title"
+    eyebrow="Website packages"
+    title="A focused starting point."
+    muted="Not a rigid template."
+    description="Each website is designed around the business it represents. These packages establish a practical starting scope while leaving room for the details that make the project unique."
+  />
+
+  <div class="mt-14 grid items-stretch gap-8 lg:grid-cols-3">
+    {
+      websitePackages.map((servicePackage) => (
+        <PackageCard servicePackage={servicePackage} />
+      ))
+    }
+  </div>
+
+  <p class="mt-8 max-w-3xl text-sm leading-6 text-text-muted">
+    Package pricing assumes timely feedback and client-provided final text,
+    images, logos, and other business materials unless content support is
+    included separately.
+  </p>
+</Section>

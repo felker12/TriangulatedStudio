@@ -1,0 +1,160 @@
+---
+import { Icon } from "astro-icon/components";
+
+import Eyebrow from "@components/ui/Eyebrow.astro";
+import LinkButton from "@components/ui/LinkButton.astro";
+import Section from "@components/ui/Section.astro";
+import Tag from "@components/ui/Tag.astro";
+
+import type { ProjectDetail } from "@data/projects/projectDetails";
+import { servicePackages } from "@data/services/packages";
+
+interface Props {
+  project: ProjectDetail;
+}
+
+const { project } = Astro.props;
+
+const servicePackage = servicePackages.find(
+  (item) => item.id === project.packageId,
+);
+---
+
+<Section
+  id="project-intro"
+  labelledBy="project-title"
+  background="default"
+  class="overflow-hidden"
+>
+  <div class="grid gap-14 lg:grid-cols-[1fr_0.72fr] lg:gap-24">
+    <div class="max-w-4xl">
+      <Eyebrow
+        text={
+          project.section === "professional"
+            ? "Professional project"
+            : "Engineering project"
+        }
+      />
+
+      <h1
+        id="project-title"
+        class="font-display text-5xl font-medium leading-[0.98]
+               tracking-[-0.045em] text-text
+               sm:text-6xl lg:text-7xl"
+      >
+        {project.title}
+      </h1>
+
+      <p class="mt-7 max-w-3xl text-lg leading-8 text-text-muted">
+        {project.description}
+      </p>
+
+      <div class="mt-8 flex flex-wrap gap-2">
+        {project.tags.map((tag) => <Tag label={tag} />)}
+      </div>
+
+      {
+        project.links && project.links.length > 0 && (
+          <div class="mt-10 flex flex-wrap gap-4">
+            {project.links.map((link, index) => (
+              <LinkButton
+                href={link.href}
+                label={link.label}
+                variant={index === 0 ? "primary" : "secondary"}
+                marginTop={false}
+              />
+            ))}
+          </div>
+        )
+      }
+    </div>
+
+    <aside
+      class="relative border border-border/60 bg-white/[0.02]
+             p-6 sm:p-8"
+      style="clip-path: polygon(
+        0 0,
+        calc(100% - 24px) 0,
+        100% 24px,
+        100% 100%,
+        0 100%
+      );"
+    >
+      <dl class="divide-y divide-border/60">
+        <div class="grid grid-cols-[7rem_1fr] gap-5 py-4 first:pt-0">
+          <dt class="font-mono text-[0.65rem] uppercase tracking-[0.16em] text-cyan">
+            Category
+          </dt>
+          <dd class="text-sm leading-6 text-text">{project.category}</dd>
+        </div>
+
+        <div class="grid grid-cols-[7rem_1fr] gap-5 py-4">
+          <dt class="font-mono text-[0.65rem] uppercase tracking-[0.16em] text-cyan">
+            Role
+          </dt>
+          <dd class="text-sm leading-6 text-text">{project.role}</dd>
+        </div>
+
+        {
+          project.employer && (
+            <div class="grid grid-cols-[7rem_1fr] gap-5 py-4">
+              <dt class="font-mono text-[0.65rem] uppercase tracking-[0.16em] text-cyan">
+                Employer
+              </dt>
+              <dd class="text-sm leading-6 text-text">{project.employer}</dd>
+            </div>
+          )
+        }
+
+        {
+          project.client && (
+            <div class="grid grid-cols-[7rem_1fr] gap-5 py-4">
+              <dt class="font-mono text-[0.65rem] uppercase tracking-[0.16em] text-cyan">
+                Client
+              </dt>
+              <dd class="text-sm leading-6 text-text">{project.client}</dd>
+            </div>
+          )
+        }
+
+        <div class="grid grid-cols-[7rem_1fr] gap-5 py-4">
+          <dt class="font-mono text-[0.65rem] uppercase tracking-[0.16em] text-cyan">
+            Year
+          </dt>
+          <dd class="text-sm leading-6 text-text">{project.year}</dd>
+        </div>
+
+        {
+          project.status && (
+            <div class="grid grid-cols-[7rem_1fr] gap-5 py-4">
+              <dt class="font-mono text-[0.65rem] uppercase tracking-[0.16em] text-cyan">
+                Status
+              </dt>
+              <dd class="text-sm leading-6 text-text">{project.status}</dd>
+            </div>
+          )
+        }
+
+        {
+          servicePackage && (
+            <div class="grid grid-cols-[7rem_1fr] gap-5 py-4 last:pb-0">
+              <dt class="font-mono text-[0.65rem] uppercase tracking-[0.16em] text-cyan">
+                Package
+              </dt>
+              <dd class="text-sm leading-6 text-text">{servicePackage.name}</dd>
+            </div>
+          )
+        }
+      </dl>
+
+      <p class="mt-7 border-t border-border/60 pt-6 text-sm leading-6 text-text-muted">
+        {project.attribution}
+      </p>
+
+      <div
+        aria-hidden="true"
+        class="absolute -bottom-10 -right-10 h-28 w-28 rotate-45 border border-cyan/8"
+      ></div>
+    </aside>
+  </div>
+</Section>

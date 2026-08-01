@@ -1,0 +1,58 @@
+---
+import Section from "@components/ui/Section.astro";
+import Eyebrow from "@components/ui/Eyebrow.astro";
+import LinkButton from "@components/ui/LinkButton.astro";
+---
+
+<Section
+  id="ongoing-support"
+  labelledBy="support-title"
+  background="surface"
+  borderTop
+  borderBottom
+>
+  <div class="grid gap-12 lg:grid-cols-[1fr_0.8fr] lg:items-end lg:gap-20">
+    <div>
+      <Eyebrow text="After launch" />
+
+      <h2
+        id="support-title"
+        class="max-w-3xl font-display text-4xl font-medium
+               tracking-[-0.035em] text-text
+               sm:text-5xl lg:text-6xl"
+      >
+        A website should not become{" "}
+        <span class="text-text-muted">another neglected task.</span>
+      </h2>
+
+      <p class="mt-6 max-w-2xl leading-7 text-text-muted">
+        Optional monthly support is available for maintenance, content changes,
+        technical monitoring, backups, reporting, and continued improvements
+        after launch.
+      </p>
+    </div>
+
+    <div class="border-l border-border/60 pl-7 sm:pl-10">
+      <p
+        class="font-mono text-[0.65rem] uppercase
+               tracking-[0.18em] text-cyan"
+      >
+        Support plans
+      </p>
+
+      <p class="mt-4 font-display text-3xl font-medium text-text">
+        Starting at $50/month
+      </p>
+
+      <p class="mt-4 leading-7 text-text-muted">
+        The exact plan depends on the size of the website and how frequently
+        updates are expected.
+      </p>
+
+      <LinkButton
+        href="/contact?service=support"
+        label="Discuss ongoing support"
+      />
+    </div>
+  </div>
+</Section>

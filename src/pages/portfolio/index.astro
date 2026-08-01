@@ -1,8 +1,146 @@
 ---
-//src/pages/portfolio/index.astro
+//src/portfolio/index.astro
 import Layout from "@layouts/Layout.astro";
+
+import Eyebrow from "@components/ui/Eyebrow.astro";
+import LinkButton from "@components/ui/LinkButton.astro";
+import Section from "@components/ui/Section.astro";
+import ProjectCollection from "@components/portfolio/ProjectCollection.astro";
+
+import {
+  engineeringProjects,
+  professionalProjects,
+} from "@data/portfolio/completedProjects";
 ---
 
-<Layout title="Triangulated Studio's Projects" description="">
-  <h1>Our Projects</h1>
+<Layout
+  title="Portfolio"
+  description="Explore professional website work and independent software-engineering projects from Triangulated Studio."
+>
+  <Section
+    id="portfolio-intro"
+    labelledBy="portfolio-title"
+    background="default"
+    class="overflow-hidden"
+  >
+    <div
+      class="grid items-end gap-12
+             lg:grid-cols-[1fr_0.72fr] lg:gap-24"
+    >
+      <div class="max-w-4xl">
+        <Eyebrow text="Selected portfolio" />
+
+        <h1
+          id="portfolio-title"
+          class="font-display text-5xl font-medium leading-[0.98]
+                 tracking-[-0.045em] text-text
+                 sm:text-6xl lg:text-7xl"
+        >
+          Professional experience
+          <span class="text-text-muted"> and independent engineering. </span>
+        </h1>
+      </div>
+
+      <div class="border-l border-border/60 pl-6 sm:pl-10">
+        <p class="text-lg leading-8 text-white-soft">
+          A collection of business websites, custom platforms, and software
+          projects approached through connected design and engineering.
+        </p>
+
+        <p class="mt-5 leading-7 text-text-muted">
+          Professional projects include clear attribution to the employer and
+          organization behind the work. Independent projects focus on software
+          architecture, tooling, and technical experimentation.
+        </p>
+
+        <div class="mt-8 flex flex-wrap gap-4">
+          <LinkButton
+            href="#professional-work"
+            label="Professional work"
+            variant="primary"
+            marginTop={false}
+          />
+
+          <LinkButton
+            href="#engineering-projects"
+            label="Engineering projects"
+            variant="secondary"
+            marginTop={false}
+          />
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <ProjectCollection
+    id="professional-work"
+    titleId="professional-work-title"
+    eyebrow="Professional work"
+    title="Built for real businesses."
+    muted="Presented with context."
+    description="Websites and digital systems completed through professional employment. Each project identifies the role, employer, client, and circumstances behind the work."
+    projects={professionalProjects}
+    background="midnight"
+    borderTop
+    borderBottom
+  />
+
+  <ProjectCollection
+    id="engineering-projects"
+    titleId="engineering-projects-title"
+    eyebrow="Engineering projects"
+    title="Products, platforms,"
+    muted="and technical exploration."
+    description="Independent applications and software systems created to explore architecture, automation, authentication, tooling, and maintainable development practices."
+    projects={engineeringProjects}
+    background="default"
+  />
+
+  <Section
+    id="portfolio-cta"
+    labelledBy="portfolio-cta-title"
+    background="surface"
+    borderTop
+  >
+    <div
+      class="grid gap-10
+             lg:grid-cols-[1fr_auto] lg:items-end lg:gap-20"
+    >
+      <div class="max-w-4xl">
+        <Eyebrow text="Have a similar project?" />
+
+        <h2
+          id="portfolio-cta-title"
+          class="font-display text-4xl font-medium
+                 tracking-[-0.04em] text-text
+                 sm:text-5xl lg:text-6xl"
+        >
+          Start with what needs to work.
+          <span class="text-text-muted"> Then shape how it should feel. </span>
+        </h2>
+
+        <p class="mt-6 max-w-2xl text-lg leading-8 text-text-muted">
+          Explore the available website packages and custom-development options,
+          or start a conversation about a project that does not fit neatly into
+          either category.
+        </p>
+      </div>
+
+      <div class="flex flex-wrap gap-4">
+        <LinkButton
+          href="/services"
+          label="Explore services"
+          variant="secondary"
+          marginTop={false}
+        />
+
+        <LinkButton
+          href="/contact"
+          label="Start a conversation"
+          variant="primary"
+          marginTop={false}
+        />
+      </div>
+    </div>
+  </Section>
 </Layout>

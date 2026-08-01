@@ -1,0 +1,41 @@
+---
+import Section from "@components/ui/Section.astro";
+import SectionHeader from "@components/ui/SectionHeader.astro";
+
+interface Props {
+  outcomes: string[];
+}
+
+const { outcomes } = Astro.props;
+---
+
+<Section
+  id="project-outcomes"
+  labelledBy="project-outcomes-title"
+  background="default"
+>
+  <SectionHeader
+    id="project-outcomes-title"
+    eyebrow="Outcomes"
+    title="What the project"
+    muted="made possible."
+    description="The practical result of the work beyond the interface itself."
+    maxWidth="max-w-3xl"
+  />
+
+  <ol class="mt-14 grid border-l border-t border-border/60 md:grid-cols-3">
+    {
+      outcomes.map((outcome, index) => (
+        <li class="min-h-56 border-b border-r border-border/60 p-7 sm:p-8">
+          <span class="font-mono text-xs tracking-[0.16em] text-cyan">
+            {String(index + 1).padStart(2, "0")}
+          </span>
+
+          <p class="mt-8 text-lg leading-8 text-text">
+            {outcome}
+          </p>
+        </li>
+      ))
+    }
+  </ol>
+</Section>

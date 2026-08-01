@@ -1,0 +1,54 @@
+---
+import Section from "@components/ui/Section.astro";
+import SectionHeader from "@components/ui/SectionHeader.astro";
+
+import type { ProjectDetail } from "@data/projects/projectDetails";
+
+interface Props {
+  project: ProjectDetail;
+}
+
+const { project } = Astro.props;
+---
+
+<Section
+  id="project-overview"
+  labelledBy="project-overview-title"
+  background="midnight"
+  borderTop
+  borderBottom
+>
+  <div class="grid gap-14 lg:grid-cols-[0.72fr_1.28fr] lg:gap-24">
+    <SectionHeader
+      id="project-overview-title"
+      eyebrow="Project overview"
+      title="The context behind"
+      muted="the final result."
+      mutedBlock
+      description="A closer look at the goals, decisions, and technical thinking that shaped the project."
+      maxWidth="max-w-xl"
+    />
+
+    <div class="space-y-6">
+      {
+        project.overview.map((paragraph, index) => (
+          <p
+            class:list={[
+              "leading-8",
+              index === 0
+                ? "text-lg text-white-soft"
+                : "text-text-muted",
+            ]}
+          >
+            {paragraph}
+          </p>
+        ))
+      }
+
+      <div aria-hidden="true" class="flex items-center pt-4">
+        <span class="h-px flex-1 bg-linear-to-r from-transparent to-cyan/60"></span>
+        <span class="h-2 w-2 rounded-full bg-cyan"></span>
+      </div>
+    </div>
+  </div>
+</Section>

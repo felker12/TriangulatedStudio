@@ -1,0 +1,55 @@
+---
+import Eyebrow from "@components/ui/Eyebrow.astro";
+import LinkButton from "@components/ui/LinkButton.astro";
+import Section from "@components/ui/Section.astro";
+---
+
+<Section
+  id="about-intro"
+  labelledBy="about-title"
+  background="default"
+  class="overflow-hidden"
+>
+  <div
+    class="grid items-end gap-14
+           lg:grid-cols-[1.08fr_0.92fr] lg:gap-24"
+  >
+    <div class="max-w-4xl">
+      <Eyebrow text="About the studio" />
+
+      <h1
+        id="about-title"
+        class="font-display text-5xl font-medium leading-[0.98]
+               tracking-[-0.045em] text-text
+               sm:text-6xl lg:text-7xl"
+      >
+        Design and engineering,
+        <span class="text-text-muted"> considered together. </span>
+      </h1>
+    </div>
+
+    <div class="border-l border-border/60 pl-6 sm:pl-10">
+      <p class="text-lg leading-8 text-white-soft">
+        Triangulated Studio is an independent digital studio focused on
+        thoughtful websites and purpose-built software.
+      </p>
+
+      <p class="mt-5 leading-7 text-text-muted">
+        The studio brings strategy, visual design, frontend development, and
+        software engineering into one connected process rather than treating
+        them as isolated services.
+      </p>
+
+      <div class="mt-8 flex flex-wrap gap-4">
+        <LinkButton
+          href="/portfolio"
+          label="Explore the portfolio"
+          variant="primary"
+          marginTop={false}
+        />
+
+        <LinkButton href="/services" label="View services" marginTop={false} />
+      </div>
+    </div>
+  </div>
+</Section>

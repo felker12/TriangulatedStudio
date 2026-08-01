@@ -1,0 +1,47 @@
+---
+import Section from "@components/ui/Section.astro";
+import PackageCard from "@components/services/PackageCard.astro";
+
+import { customDevelopmentPackage } from "@data/services/packages";
+---
+
+{
+  customDevelopmentPackage && (
+    <Section
+      id="custom-development"
+      labelledBy="custom-development-title"
+      background="midnight"
+      borderTop
+      borderBottom
+    >
+      <div class="grid gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:gap-20">
+        <div>
+          <p
+            class="font-mono text-xs uppercase
+                   tracking-[0.22em] text-cyan"
+          >
+            Custom software
+          </p>
+
+          <h2
+            id="custom-development-title"
+            class="mt-5 font-display text-4xl font-medium
+                   tracking-[-0.035em] text-text
+                   sm:text-5xl lg:text-6xl"
+          >
+            Sometimes the right solution
+            <span class="block text-text-muted">needs to be built.</span>
+          </h2>
+
+          <p class="mt-6 max-w-xl leading-7 text-text-muted">
+            Custom development is available for projects that need more than a
+            public-facing website. Scope, architecture, and investment are
+            defined after understanding the workflow and intended outcome.
+          </p>
+        </div>
+
+        <PackageCard servicePackage={customDevelopmentPackage} />
+      </div>
+    </Section>
+  )
+}

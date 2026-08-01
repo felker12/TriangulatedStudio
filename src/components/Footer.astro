@@ -1,3 +1,219 @@
 ---
-//src/components/Footer.astro
+// src/components/Footer.astro
+
+import { Image } from "astro:assets";
+import LinkButton from "@components/ui/LinkButton.astro";
+import logoMark from "@assets/Logo_NoBackground.png";
+
+const currentYear = new Date().getFullYear();
+
+const primaryLinks = [
+  {
+    href: "/",
+    label: "Home",
+  },
+  {
+    href: "/portfolio",
+    label: "Portfolio",
+  },
+  {
+    href: "/services",
+    label: "Services",
+  },
+  {
+    href: "/about",
+    label: "About",
+  },
+  {
+    href: "/contact",
+    label: "Contact",
+  },
+];
+
+const serviceLinks = [
+  {
+    href: "/services#website-packages",
+    label: "Website packages",
+  },
+  {
+    href: "/services#custom-development",
+    label: "Custom software",
+  },
+  {
+    href: "/services#additional-services",
+    label: "Flexible additions",
+  },
+  {
+    href: "/services#ongoing-support",
+    label: "Ongoing support",
+  },
+];
 ---
+
+<footer class="border-t border-border/60 bg-midnight/55 px-5">
+  <div class="mx-auto max-w-7xl">
+    <!-- Main footer -->
+    <div
+      class="grid gap-14 py-16
+             sm:py-20
+             lg:grid-cols-[1.25fr_0.75fr_0.75fr]
+             lg:gap-20"
+    >
+      <!-- Brand -->
+      <div class="max-w-xl">
+        <a
+          href="/"
+          aria-label="Triangulated Studio home"
+          class="inline-flex items-center gap-4"
+        >
+          <span
+            class="relative flex h-14 w-14 items-center justify-center
+            overflow-hidden border border-border/60
+            bg-surface/60 backdrop-blur-sm"
+            style="clip-path: polygon(
+                    0 0,
+                    calc(100% - 10px) 0,
+                    100% 10px,
+                    100% 100%,
+                    10px 100%,
+                    0 calc(100% - 10px)
+                );"
+          >
+            <Image
+              src={logoMark}
+              alt=""
+              aria-hidden="true"
+              width={42}
+              height={42}
+              format="webp"
+              quality={90}
+              class="h-10 w-10 object-contain"
+            />
+          </span>
+
+          <span>
+            <span
+              class="block font-display text-lg font-medium
+                     tracking-[-0.02em] text-text"
+            >
+              Triangulated Studio
+            </span>
+
+            <span
+              class="mt-1 block font-mono text-[0.58rem]
+                     uppercase tracking-[0.18em] text-cyan"
+            >
+              Design · Development · Engineering
+            </span>
+          </span>
+        </a>
+
+        <p class="mt-7 max-w-lg leading-7 text-text-muted">
+          An independent digital studio creating thoughtful websites,
+          purpose-built software, and maintainable digital systems for growing
+          businesses.
+        </p>
+
+        <LinkButton href="/contact" label="Start a conversation" />
+      </div>
+
+      <!-- Navigation -->
+      <nav aria-labelledby="footer-navigation-title">
+        <h2
+          id="footer-navigation-title"
+          class="font-mono text-[0.65rem] uppercase
+                 tracking-[0.18em] text-cyan"
+        >
+          Navigate
+        </h2>
+
+        <ul class="mt-6 space-y-3">
+          {
+            primaryLinks.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="inline-flex text-sm text-text-muted
+                         transition-colors duration-200
+                         hover:text-text"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <!-- Services -->
+      <nav aria-labelledby="footer-services-title">
+        <h2
+          id="footer-services-title"
+          class="font-mono text-[0.65rem] uppercase
+                 tracking-[0.18em] text-cyan"
+        >
+          Services
+        </h2>
+
+        <ul class="mt-6 space-y-3">
+          {
+            serviceLinks.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="inline-flex text-sm text-text-muted
+                         transition-colors duration-200
+                         hover:text-text"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Connector -->
+    <div aria-hidden="true" class="flex items-center">
+      <span
+        class="h-px flex-1
+               bg-linear-to-r from-transparent via-border to-cyan/60"
+      ></span>
+
+      <span
+        class="flex h-3 w-3 items-center justify-center
+               rounded-full border border-cyan/50"
+      >
+        <span class="h-1.5 w-1.5 rounded-full bg-cyan"></span>
+      </span>
+    </div>
+
+    <!-- Bottom bar -->
+    <div
+      class="flex flex-col gap-4 py-7
+             font-mono text-[0.62rem] uppercase
+             tracking-[0.14em] text-text-muted
+             sm:flex-row sm:items-center sm:justify-between"
+    >
+      <p>
+        © {currentYear} Triangulated Studio. All rights reserved.
+      </p>
+
+      <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
+        <span>Independent digital studio</span>
+
+        <span
+          aria-hidden="true"
+          class="hidden h-1 w-1 rounded-full bg-cyan sm:block"></span>
+
+        <a
+          href="/contact"
+          class="transition-colors duration-200 hover:text-cyan"
+        >
+          Limited project availability
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>

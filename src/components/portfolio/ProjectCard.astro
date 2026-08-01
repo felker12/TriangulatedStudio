@@ -1,0 +1,148 @@
+---
+// src/components/portfolio/ProjectCard.astro
+
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+
+import Tag from "@components/ui/Tag.astro";
+
+import type { CompletedProject } from "@data/portfolio/completedProjects";
+import { servicePackages } from "@data/services/packages";
+
+interface Props {
+  project: CompletedProject;
+  priority?: boolean;
+}
+
+const { project, priority = false } = Astro.props;
+
+const servicePackage = servicePackages.find(
+  (item) => item.id === project.packageId,
+);
+
+const projectHref = `/projects/${project.slug}`;
+---
+
+<article class="group flex h-full flex-col">
+  <a
+    href={projectHref}
+    aria-label={`View the ${project.title} project`}
+    class="relative block aspect-4/3 overflow-hidden
+           border border-border/60 bg-surface"
+    style="clip-path: polygon(
+      0 0,
+      calc(100% - 22px) 0,
+      100% 22px,
+      100% 100%,
+      0 100%
+    );"
+  >
+    <Image
+      src={project.image}
+      alt={project.imageAlt}
+      widths={[480, 720, 960, 1280]}
+      sizes="(max-width: 768px) 100vw, 50vw"
+      loading={priority ? "eager" : "lazy"}
+      fetchpriority={priority ? "high" : "auto"}
+      format="webp"
+      quality={85}
+      class="h-full w-full object-cover
+             transition-transform duration-700 ease-out
+             group-hover:scale-[1.025]"
+    />
+
+    <div
+      aria-hidden="true"
+      class="absolute inset-0 bg-linear-to-t
+             from-void/70 via-transparent to-void/10"
+    >
+    </div>
+
+    <!-- Top-right action -->
+    <span
+      aria-hidden="true"
+      class="absolute right-5 top-5
+             flex h-11 w-11 items-center justify-center
+             rounded-full bg-void/65
+             text-text-muted ring-1 ring-white/10
+             backdrop-blur-md
+             transition-all duration-300
+             group-hover:bg-cyan/10
+             group-hover:text-cyan
+             group-hover:ring-cyan/40
+             group-hover:shadow-[0_0_18px_rgba(88,196,255,0.18)]"
+    >
+      <Icon
+        name="mdi:arrow-top-right"
+        size={18}
+        class="transition-transform duration-300
+               group-hover:-translate-y-0.5
+               group-hover:translate-x-0.5"
+      />
+    </span>
+
+    <!-- Project details -->
+    <div class="absolute inset-x-0 bottom-0 p-5 sm:p-6">
+      <p
+        class="font-mono text-[0.62rem] uppercase
+               tracking-[0.17em] text-cyan"
+      >
+        {project.category}
+      </p>
+
+      <h3
+        class="mt-2 font-display text-2xl font-medium
+               tracking-tight text-text sm:text-3xl"
+      >
+        {project.title}
+      </h3>
+
+      {
+        servicePackage && (
+          <p
+            class="mt-2 font-mono text-[0.62rem] uppercase
+                   tracking-[0.15em] text-text-muted"
+          >
+            {servicePackage.name}
+          </p>
+        )
+      }
+    </div>
+  </a>
+
+  <div class="flex flex-1 flex-col pt-6">
+    <div
+      class="flex flex-wrap items-center gap-x-4 gap-y-2
+             font-mono text-[0.62rem] uppercase
+             tracking-[0.15em] text-text-muted"
+    >
+      <span>{project.year}</span>
+
+      <span aria-hidden="true" class="h-1 w-1 rounded-full bg-cyan"></span>
+
+      <span>{project.role}</span>
+    </div>
+
+    <p class="mt-4 flex-1 leading-7 text-text-muted">
+      {project.summary}
+    </p>
+
+    <div
+      aria-label={`${project.title} technologies`}
+      class="mt-6 flex flex-wrap gap-2"
+    >
+      {
+        project.technologies
+          .slice(0, 5)
+          .map((technology) => <Tag label={technology} />)
+      }
+    </div>
+
+    <p
+      class="mt-6 border-t border-border/60 pt-5
+             text-sm leading-6 text-text-muted"
+    >
+      {project.attribution}
+    </p>
+  </div>
+</article>

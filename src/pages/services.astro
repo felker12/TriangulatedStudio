@@ -1,0 +1,106 @@
+---
+import Layout from "@layouts/Layout.astro";
+
+import Section from "@components/ui/Section.astro";
+import Eyebrow from "@components/ui/Eyebrow.astro";
+import LinkButton from "@components/ui/LinkButton.astro";
+
+import WebsitePackages from "@components/services/WebsitePackages.astro";
+import CustomDevelopment from "@components/services/CustomDevelopment.astro";
+import AdditionalServices from "@components/services/AdditionalServices.astro";
+import SupportPlans from "@components/services/SupportPlans.astro";
+import Availability from "@components/services/Availability.astro";
+---
+
+<Layout
+  title="Website Packages & Development Services"
+  description="Explore focused website packages, custom software development, and ongoing support from Triangulated Studio."
+>
+  <Section
+    id="services-intro"
+    labelledBy="services-title"
+    background="default"
+    class="overflow-hidden"
+  >
+    <div class="relative max-w-5xl">
+      <Eyebrow text="Services and packages" />
+
+      <h1
+        id="services-title"
+        class="font-display text-5xl font-medium leading-[0.98]
+               tracking-[-0.045em] text-text
+               sm:text-6xl lg:text-7xl"
+      >
+        Thoughtful websites,
+        <span class="text-text-muted"> built at a focused scale. </span>
+      </h1>
+
+      <p class="mt-8 max-w-2xl text-lg leading-8 text-text-muted">
+        Triangulated Studio works with a limited number of clients to design and
+        develop focused websites, custom tools, and maintainable digital
+        systems.
+      </p>
+
+      <div class="mt-10 flex flex-wrap gap-4">
+        <LinkButton
+          href="#website-packages"
+          label="Explore website packages"
+          variant="primary"
+          marginTop={false}
+        />
+
+        <LinkButton
+          href="/contact"
+          label="Discuss a project"
+          variant="secondary"
+          marginTop={false}
+        />
+      </div>
+
+      <div
+        aria-hidden="true"
+        class="absolute -right-20 top-0 -z-10 h-48 w-48
+               rotate-45 border border-cyan/6"
+      >
+      </div>
+    </div>
+  </Section>
+
+  <WebsitePackages />
+  <CustomDevelopment />
+  <AdditionalServices />
+  <SupportPlans />
+  <Availability />
+
+  <Section
+    id="services-cta"
+    labelledBy="services-cta-title"
+    background="surface"
+    borderTop
+  >
+    <div class="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
+      <div>
+        <Eyebrow text="Have something different in mind?" />
+
+        <h2
+          id="services-cta-title"
+          class="max-w-4xl font-display text-4xl font-medium
+                 tracking-[-0.04em] text-text
+                 sm:text-5xl lg:text-6xl"
+        >
+          Start with the goal.
+          <span class="text-text-muted">
+            We can define the right scope together.
+          </span>
+        </h2>
+      </div>
+
+      <LinkButton
+        href="/contact"
+        label="Start a conversation"
+        variant="primary"
+        marginTop={false}
+      />
+    </div>
+  </Section>
+</Layout>

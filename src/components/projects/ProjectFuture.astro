@@ -1,0 +1,46 @@
+---
+import Section from "@components/ui/Section.astro";
+import SectionHeader from "@components/ui/SectionHeader.astro";
+
+interface Props {
+  improvements: string[];
+}
+
+const { improvements } = Astro.props;
+---
+
+<Section
+  id="future-improvements"
+  labelledBy="future-improvements-title"
+  background="midnight"
+  borderTop
+  borderBottom
+>
+  <div class="grid gap-14 lg:grid-cols-[0.72fr_1.28fr] lg:gap-24">
+    <SectionHeader
+      id="future-improvements-title"
+      eyebrow="Future direction"
+      title="Still evolving."
+      muted="Still worth refining."
+      mutedBlock
+      description="Potential next steps identified through the current implementation."
+      maxWidth="max-w-xl"
+    />
+
+    <ol class="border-t border-border/60">
+      {
+        improvements.map((improvement, index) => (
+          <li
+            class="grid grid-cols-[3rem_1fr] gap-5 border-b border-border/60 py-6"
+          >
+            <span class="font-mono text-xs tracking-[0.16em] text-cyan">
+              {String(index + 1).padStart(2, "0")}
+            </span>
+
+            <p class="leading-7 text-text-muted">{improvement}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</Section>

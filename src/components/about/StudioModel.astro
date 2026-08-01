@@ -1,0 +1,76 @@
+---
+import Section from "@components/ui/Section.astro";
+import SectionHeader from "@components/ui/SectionHeader.astro";
+
+const principles = [
+  {
+    number: "01",
+    title: "Limited project load",
+    description:
+      "Only a small number of active projects are accepted at one time so each receives focused attention.",
+  },
+  {
+    number: "02",
+    title: "Direct collaboration",
+    description:
+      "Clients work directly with the person designing and developing the project, without layers of account management.",
+  },
+  {
+    number: "03",
+    title: "Practical scope",
+    description:
+      "Projects are shaped around realistic goals, clear deliverables, and a scope that can be completed well.",
+  },
+  {
+    number: "04",
+    title: "Maintainable results",
+    description:
+      "The final product should remain understandable, useful, and capable of evolving after launch.",
+  },
+];
+---
+
+<Section
+  id="studio-model"
+  labelledBy="studio-model-title"
+  background="surface"
+  borderTop
+  borderBottom
+>
+  <SectionHeader
+    id="studio-model-title"
+    eyebrow="How the studio operates"
+    title="Small by design."
+    muted="Focused by necessity."
+    description="Triangulated Studio is intentionally operated on a limited basis. The goal is not to imitate a large agency, but to provide thoughtful, direct project work at a manageable scale."
+  />
+
+  <div
+    class="mt-14 grid border-l border-t border-border/60
+           sm:grid-cols-2"
+  >
+    {
+      principles.map((principle) => (
+        <article
+          class="min-h-64 border-b border-r border-border/60
+                 p-7 sm:p-8"
+        >
+          <span class="font-mono text-xs tracking-[0.16em] text-cyan">
+            {principle.number}
+          </span>
+
+          <h3
+            class="mt-8 font-display text-2xl font-medium
+                   tracking-[-0.02em] text-text"
+          >
+            {principle.title}
+          </h3>
+
+          <p class="mt-4 max-w-xl leading-7 text-text-muted">
+            {principle.description}
+          </p>
+        </article>
+      ))
+    }
+  </div>
+</Section>

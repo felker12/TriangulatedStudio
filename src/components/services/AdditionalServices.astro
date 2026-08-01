@@ -1,0 +1,69 @@
+---
+import Section from "@components/ui/Section.astro";
+import SectionHeader from "@components/ui/SectionHeader.astro";
+
+import { additionalServices } from "@data/services/additionalServices";
+---
+
+<Section
+  id="additional-services"
+  labelledBy="additional-services-title"
+  background="default"
+>
+  <div class="grid gap-14 lg:grid-cols-[0.68fr_1.32fr] lg:gap-20">
+    <div>
+      <SectionHeader
+        id="additional-services-title"
+        eyebrow="Flexible additions"
+        title="Support where"
+        muted="the project needs it."
+        description="Not every project fits neatly into a package. These services can be added where they improve the final result."
+        maxWidth="max-w-xl"
+      />
+
+      <p class="mt-8 max-w-md text-sm leading-6 text-text-muted">
+        Additions are scoped separately based on complexity, content volume, and
+        the systems involved.
+      </p>
+    </div>
+
+    <div
+      class="grid border-t border-l border-border/60
+             sm:grid-cols-2"
+    >
+      {
+        additionalServices.map((service, index) => (
+          <article
+            class="group relative min-h-48 border-r border-b border-border/60
+                   p-6 transition-colors duration-200
+                   hover:bg-white/2 sm:p-7"
+          >
+            <div class="flex items-start justify-between gap-5">
+              <span class="font-mono text-xs tracking-[0.16em] text-cyan">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+
+              <span
+                aria-hidden="true"
+                class="mt-1 h-1.5 w-1.5 rounded-full border border-cyan/50
+                       transition-colors duration-200
+                       group-hover:bg-cyan"
+              />
+            </div>
+
+            <h3
+              class="mt-8 font-display text-xl font-medium
+                     tracking-[-0.02em] text-text sm:text-2xl"
+            >
+              {service.title}
+            </h3>
+
+            <p class="mt-3 max-w-xl text-sm leading-6 text-text-muted">
+              {service.description}
+            </p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</Section>

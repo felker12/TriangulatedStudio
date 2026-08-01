@@ -1,0 +1,56 @@
+---
+import Section from "@components/ui/Section.astro";
+import Eyebrow from "@components/ui/Eyebrow.astro";
+---
+
+<Section
+  id="studio-background"
+  labelledBy="studio-background-title"
+  background="default"
+>
+  <div class="grid gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-24">
+    <div>
+      <Eyebrow text="Built from experience" />
+
+      <h2
+        id="studio-background-title"
+        class="max-w-3xl font-display text-4xl font-medium
+               leading-[1.05] tracking-[-0.04em] text-text
+               sm:text-5xl lg:text-6xl"
+      >
+        A studio shaped by
+        <span class="text-text-muted"> real projects and technical work. </span>
+      </h2>
+    </div>
+
+    <div class="space-y-6">
+      <p class="text-lg leading-8 text-white-soft">
+        Triangulated Studio grows out of hands-on experience delivering business
+        websites, improving search performance, managing deployments, and
+        building full-stack software.
+      </p>
+
+      <p class="leading-7 text-text-muted">
+        The portfolio includes professional work completed through employment as
+        well as independent engineering projects. Each project is presented with
+        clear attribution so the role, organization, and circumstances behind
+        the work remain transparent.
+      </p>
+
+      <p class="leading-7 text-text-muted">
+        That combination of client-facing work and software engineering makes it
+        possible to approach a simple marketing website and a custom application
+        with the same emphasis on clarity, performance, and maintainability.
+      </p>
+
+      <div aria-hidden="true" class="flex items-center pt-4">
+        <span
+          class="h-px flex-1 bg-linear-to-r
+                 from-cyan/60 to-transparent"
+        ></span>
+
+        <span class="h-2 w-2 rounded-full bg-cyan"></span>
+      </div>
+    </div>
+  </div>
+</Section>

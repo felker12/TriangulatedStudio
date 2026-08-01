@@ -1,0 +1,73 @@
+---
+import Section from "@components/ui/Section.astro";
+import SectionHeader from "@components/ui/SectionHeader.astro";
+
+const perspectives = [
+  {
+    number: "01",
+    title: "Strategy",
+    description:
+      "Understanding the audience, objective, and business problem before deciding what should be designed or built.",
+  },
+  {
+    number: "02",
+    title: "Design",
+    description:
+      "Creating clear visual systems and interfaces that help people understand, trust, and use the final product.",
+  },
+  {
+    number: "03",
+    title: "Engineering",
+    description:
+      "Building fast, accessible, and maintainable systems that support the design rather than limiting it.",
+  },
+];
+---
+
+<Section
+  id="studio-approach"
+  labelledBy="studio-approach-title"
+  background="midnight"
+  borderTop
+  borderBottom
+>
+  <div class="grid gap-14 lg:grid-cols-[0.72fr_1.28fr] lg:gap-24">
+    <SectionHeader
+      id="studio-approach-title"
+      eyebrow="Why Triangulated"
+      title="Strong work needs"
+      muted="more than one perspective."
+      mutedBlock
+      description="The name reflects the way each project is approached: through the connected perspectives of strategy, design, and engineering."
+      maxWidth="max-w-xl"
+    />
+
+    <div class="border-t border-border/60">
+      {
+        perspectives.map((perspective) => (
+          <article
+            class="grid gap-5 border-b border-border/60 py-9
+                   sm:grid-cols-[4rem_1fr] sm:gap-8"
+          >
+            <span class="font-mono text-xs tracking-[0.18em] text-cyan">
+              {perspective.number}
+            </span>
+
+            <div>
+              <h3
+                class="font-display text-2xl font-medium
+                       tracking-[-0.02em] text-text"
+              >
+                {perspective.title}
+              </h3>
+
+              <p class="mt-4 max-w-2xl leading-7 text-text-muted">
+                {perspective.description}
+              </p>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</Section>

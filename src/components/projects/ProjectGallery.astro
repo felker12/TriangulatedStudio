@@ -1,0 +1,122 @@
+---
+import { Icon } from "astro-icon/components";
+
+import Section from "@components/ui/Section.astro";
+import SectionHeader from "@components/ui/SectionHeader.astro";
+
+import type { ProjectScreenshot } from "@data/projects/projectDetails";
+
+interface Props {
+  projectTitle: string;
+  screenshots: ProjectScreenshot[];
+}
+
+const { projectTitle, screenshots } = Astro.props;
+const [featuredScreenshot, ...remainingScreenshots] = screenshots;
+---
+
+<Section
+  id="project-gallery"
+  labelledBy="project-gallery-title"
+  background="midnight"
+  borderTop
+  borderBottom
+>
+  <SectionHeader
+    id="project-gallery-title"
+    eyebrow="Project gallery"
+    title="A closer look at"
+    muted={`${projectTitle}.`}
+    description="Selected screens and interfaces from the project."
+    maxWidth="max-w-3xl"
+  />
+
+  {
+    featuredScreenshot && (
+      <figure class="mt-14">
+        <a
+          href={featuredScreenshot.src}
+          target="_blank"
+          rel="noreferrer"
+          class="group relative block overflow-hidden border border-border/60 bg-surface"
+          style="clip-path: polygon(
+            0 0,
+            calc(100% - 28px) 0,
+            100% 28px,
+            100% 100%,
+            0 100%
+          );"
+        >
+          <img
+            src={featuredScreenshot.src}
+            width={featuredScreenshot.width}
+            height={featuredScreenshot.height}
+            alt={featuredScreenshot.alt}
+            loading="lazy"
+            class="h-auto w-full object-cover transition-transform duration-700 group-hover:scale-[1.01]"
+          />
+
+          <span
+            class="absolute right-5 top-5 flex h-11 w-11 items-center justify-center
+                   rounded-full bg-void/65 text-text-muted ring-1 ring-white/10
+                   backdrop-blur-md transition-all duration-300
+                   group-hover:bg-cyan/10 group-hover:text-cyan group-hover:ring-cyan/40"
+          >
+            <Icon name="mdi:open-in-new" size={18} />
+          </span>
+        </a>
+
+        {
+          featuredScreenshot.caption && (
+            <figcaption class="mt-4 text-sm leading-6 text-text-muted">
+              {featuredScreenshot.caption}
+            </figcaption>
+          )
+        }
+      </figure>
+    )
+  }
+
+  {
+    remainingScreenshots.length > 0 && (
+      <div class="mt-8 grid gap-8 md:grid-cols-2">
+        {remainingScreenshots.map((screenshot) => (
+          <figure>
+            <a
+              href={screenshot.src}
+              target="_blank"
+              rel="noreferrer"
+              class="group relative block overflow-hidden border border-border/60 bg-surface"
+            >
+              <img
+                src={screenshot.src}
+                width={screenshot.width}
+                height={screenshot.height}
+                alt={screenshot.alt}
+                loading="lazy"
+                class="aspect-video h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.015]"
+              />
+
+              <span
+                class="absolute right-4 top-4 flex h-10 w-10 items-center justify-center
+                       rounded-full bg-void/65 text-text-muted ring-1 ring-white/10
+                       backdrop-blur-md transition-all duration-300
+                       group-hover:bg-cyan/10 group-hover:text-cyan group-hover:ring-cyan/40"
+              >
+                <Icon name="mdi:open-in-new" size={16} />
+              </span>
+            </a>
+
+            {
+              screenshot.caption && (
+                <figcaption class="mt-4 text-sm leading-6 text-text-muted">
+                  {screenshot.caption}
+                </figcaption>
+              )
+            }
+          </figure>
+        ))}
+      </div>
+    )
+  }
+</Section>

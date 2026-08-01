@@ -22,25 +22,25 @@ export const navLinks: NavLink[] = [
     ariaLabel: "Home - Triangulated Studio",
   },
   {
-    href: "/portfolio ",
-    label: "Portfolio ",
+    href: "/portfolio",
+    label: "Portfolio",
     ariaLabel: "View Triangulated Studio projects",
     children: [
       {
         label: "Professional Work",
         links: [
           {
-            href: "/projects/monarch-media",
+            href: "/portfolio/monarch-media",
             label: "Monarch Media",
             ariaLabel: "View the Monarch Media project",
           },
           {
-            href: "/projects/southard-homes",
+            href: "/portfolio/southard-homes",
             label: "Southard Homes",
             ariaLabel: "View the Southard Homes project",
           },
           {
-            href: "/projects/quality-landscape-and-leisure",
+            href: "/portfolio/quality-landscape-and-leisure",
             label: "Quality Landscape & Leisure",
             ariaLabel: "View the Quality Landscape and Leisure project",
           },
@@ -50,23 +50,28 @@ export const navLinks: NavLink[] = [
         label: "Engineering Projects",
         links: [
           {
-            href: "/projects/timepunch",
+            href: "/portfolio/timepunch",
             label: "TimePunch",
             ariaLabel: "View the TimePunch software project",
           },
           {
-            href: "/projects/portfolio-generator",
+            href: "/portfolio/portfolio-generator",
             label: "Portfolio Generator",
             ariaLabel: "View the Portfolio Generator project",
           },
           {
-            href: "/projects/rpg-engine",
+            href: "/portfolio/rpg-engine",
             label: "RPG Engine",
             ariaLabel: "View the RPG Engine project",
           },
         ],
       },
     ],
+  },
+  {
+    href: "/services",
+    label: "Services",
+    ariaLabel: "View Triangulated Studio services and website packages",
   },
   {
     href: "/about",

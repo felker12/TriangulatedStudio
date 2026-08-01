@@ -1,0 +1,55 @@
+---
+import Section from "@components/ui/Section.astro";
+import SectionHeader from "@components/ui/SectionHeader.astro";
+
+const points = [
+  {
+    title: "Limited availability",
+    description:
+      "Only a small number of active projects are accepted at one time so each receives focused attention.",
+  },
+  {
+    title: "Clear milestones",
+    description:
+      "The project is organized around defined deliverables, feedback points, and an agreed launch target.",
+  },
+  {
+    title: "Direct communication",
+    description:
+      "You work directly with the person designing and developing the project rather than passing through layers of account management.",
+  },
+];
+---
+
+<Section id="availability" labelledBy="availability-title" background="default">
+  <SectionHeader
+    id="availability-title"
+    eyebrow="Working together"
+    title="Small project load."
+    muted="Focused attention."
+    description="Triangulated Studio is intentionally operated on a limited basis. That keeps communication direct and prevents projects from competing with an agency-sized production schedule."
+  />
+
+  <div class="mt-14 grid border-y border-border/60 md:grid-cols-3">
+    {
+      points.map((point, index) => (
+        <article
+          class:list={[
+            "py-8 md:px-8 md:py-10",
+            index > 0 && "border-t border-border/60 md:border-l md:border-t-0",
+          ]}
+        >
+          <span class="font-mono text-xs tracking-[0.16em] text-cyan">
+            {String(index + 1).padStart(2, "0")}
+          </span>
+
+          <h3 class="mt-5 font-display text-2xl font-medium text-text">
+            {point.title}
+          </h3>
+
+          <p class="mt-4 leading-7 text-text-muted">{point.description}</p>
+        </article>
+      ))
+    }
+  </div>
+</Section>

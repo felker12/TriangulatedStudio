@@ -1,0 +1,58 @@
+---
+import ProjectCard from "@components/portfolio/ProjectCard.astro";
+import Section from "@components/ui/Section.astro";
+import SectionHeader from "@components/ui/SectionHeader.astro";
+
+import type { CompletedProject } from "@data/portfolio/completedProjects";
+
+interface Props {
+  id: string;
+  titleId: string;
+  eyebrow: string;
+  title: string;
+  muted: string;
+  description: string;
+  projects: CompletedProject[];
+  background?: "default" | "midnight" | "surface";
+  borderTop?: boolean;
+  borderBottom?: boolean;
+}
+
+const {
+  id,
+  titleId,
+  eyebrow,
+  title,
+  muted,
+  description,
+  projects,
+  background = "default",
+  borderTop = false,
+  borderBottom = false,
+} = Astro.props;
+---
+
+<Section
+  id={id}
+  labelledBy={titleId}
+  background={background}
+  borderTop={borderTop}
+  borderBottom={borderBottom}
+>
+  <SectionHeader
+    id={titleId}
+    eyebrow={eyebrow}
+    title={title}
+    muted={muted}
+    description={description}
+    maxWidth="max-w-3xl"
+  />
+
+  <div class="mt-14 grid gap-x-9 gap-y-16 md:grid-cols-2">
+    {
+      projects.map((project, index) => (
+        <ProjectCard project={project} priority={index === 0} />
+      ))
+    }
+  </div>
+</Section>

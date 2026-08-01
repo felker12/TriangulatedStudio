@@ -1,0 +1,128 @@
+---
+import { Icon } from "astro-icon/components";
+
+import LinkButton from "@components/ui/LinkButton.astro";
+import Tag from "@components/ui/Tag.astro";
+
+import type { ServicePackage } from "@data/services/packages";
+
+interface Props {
+  servicePackage: ServicePackage;
+}
+
+const { servicePackage } = Astro.props;
+
+const formattedPrice = servicePackage.price?.toLocaleString("en-US");
+
+const buttonLabel =
+  servicePackage.id === "custom-development"
+    ? "Discuss your software idea"
+    : `Ask about ${servicePackage.name}`;
+---
+
+<article
+  class:list={[
+    `relative flex h-full flex-col overflow-hidden border
+     bg-white/[0.02] p-7 sm:p-8`,
+    servicePackage.featured
+      ? `border-cyan/45 shadow-[0_0_40px_rgba(85,210,247,0.07)]`
+      : `border-border/60`,
+  ]}
+  style="clip-path: polygon(
+    0 0,
+    calc(100% - 24px) 0,
+    100% 24px,
+    100% 100%,
+    0 100%
+  );"
+>
+  {
+    servicePackage.featured && (
+      <div
+        class="absolute right-0 top-0 bg-cyan/10 px-5 py-2
+               font-mono text-[0.62rem] uppercase
+               tracking-[0.16em] text-cyan"
+      >
+        Most popular
+      </div>
+    )
+  }
+
+  <div>
+    <p
+      class="font-mono text-[0.65rem] uppercase
+             tracking-[0.18em] text-cyan"
+    >
+      {servicePackage.eyebrow}
+    </p>
+
+    <h2
+      class="mt-4 font-display text-3xl font-medium
+             tracking-[-0.03em] text-text sm:text-4xl"
+    >
+      {servicePackage.name}
+    </h2>
+
+    <p class="mt-5 leading-7 text-text-muted">
+      {servicePackage.description}
+    </p>
+
+    <div class="mt-8 border-y border-border/60 py-6">
+      <p
+        class="font-mono text-[0.62rem] uppercase
+               tracking-[0.16em] text-text-muted"
+      >
+        {servicePackage.priceLabel}
+      </p>
+
+      {
+        servicePackage.price ? (
+          <p class="mt-2 font-display text-4xl font-medium text-text">
+            ${formattedPrice}
+          </p>
+        ) : (
+          <p class="mt-2 font-display text-2xl font-medium text-text">
+            Let’s define the scope.
+          </p>
+        )
+      }
+    </div>
+
+    <div class="mt-7">
+      <h3
+        class="font-mono text-[0.65rem] uppercase
+               tracking-[0.17em] text-cyan"
+      >
+        Included
+      </h3>
+
+      <ul class="mt-5 space-y-3">
+        {
+          servicePackage.features.map((feature) => (
+            <li class="flex items-start gap-3 text-sm leading-6 text-text-muted">
+              <Icon
+                name="mdi:check"
+                size={17}
+                class="mt-1 shrink-0 text-cyan"
+              />
+
+              <span>{feature}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+
+  <div class="mt-auto pt-9">
+    <div class="mb-1 flex flex-wrap gap-2">
+      {servicePackage.bestFor.map((item) => <Tag label={item} />)}
+    </div>
+
+    <LinkButton
+      href={servicePackage.href}
+      label={buttonLabel}
+      variant={servicePackage.featured ? "primary" : "secondary"}
+    />
+  </div>
+</article>

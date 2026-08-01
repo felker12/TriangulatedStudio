@@ -1,0 +1,72 @@
+---
+// src/components/projects/ProjectDetailPage.astro
+
+import ProjectHero from "./ProjectHero.astro";
+import ProjectOverview from "./ProjectOverview.astro";
+import ProjectFeatures from "./ProjectFeatures.astro";
+import ProjectFlow from "./ProjectFlow.astro";
+import ProjectGallery from "./ProjectGallery.astro";
+import ProjectHighlights from "./ProjectHighlights.astro";
+import ProjectChallenges from "./ProjectChallenges.astro";
+import ProjectOutcomes from "./ProjectOutcomes.astro";
+import ProjectFuture from "./ProjectFuture.astro";
+import ProjectCTA from "./ProjectCTA.astro";
+
+import type { ProjectDetail } from "@data/projects/projectDetails";
+
+interface Props {
+  project: ProjectDetail;
+}
+
+const { project } = Astro.props;
+---
+
+<ProjectHero project={project} />
+
+<ProjectOverview project={project} />
+
+{
+  project.features.length > 0 && (
+    <ProjectFeatures
+      projectTitle={project.title}
+      features={project.features}
+    />
+  )
+}
+
+{project.flow && <ProjectFlow flow={project.flow} />}
+
+{
+  project.screenshots.length > 0 && (
+    <ProjectGallery
+      projectTitle={project.title}
+      screenshots={project.screenshots}
+    />
+  )
+}
+
+{
+  project.technicalHighlights.length > 0 && (
+    <ProjectHighlights highlights={project.technicalHighlights} />
+  )
+}
+
+{
+  project.challenges.length > 0 && (
+    <ProjectChallenges challenges={project.challenges} />
+  )
+}
+
+{
+  project.outcomes && project.outcomes.length > 0 && (
+    <ProjectOutcomes outcomes={project.outcomes} />
+  )
+}
+
+{
+  project.futureImprovements && project.futureImprovements.length > 0 && (
+    <ProjectFuture improvements={project.futureImprovements} />
+  )
+}
+
+<ProjectCTA project={project} />

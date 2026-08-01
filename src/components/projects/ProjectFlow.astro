@@ -1,0 +1,85 @@
+---
+import Section from "@components/ui/Section.astro";
+import SectionHeader from "@components/ui/SectionHeader.astro";
+
+import type { ProjectFlow as ProjectFlowData } from "@data/projects/projectDetails";
+
+interface Props {
+  flow: ProjectFlowData;
+}
+
+const { flow } = Astro.props;
+---
+
+<Section
+  id="project-flow"
+  labelledBy="project-flow-title"
+  background="surface"
+  borderTop
+  borderBottom
+>
+  <SectionHeader
+    id="project-flow-title"
+    eyebrow={flow.title}
+    title={flow.subtitle}
+    description={flow.description}
+    maxWidth="max-w-3xl"
+  />
+
+  <ol
+    class="relative mt-16 grid gap-0"
+    style={`grid-template-columns: repeat(${flow.steps.length}, minmax(0, 1fr));`}
+  >
+    <div
+      aria-hidden="true"
+      class="absolute left-[7%] right-[7%] top-5 hidden h-px
+             bg-linear-to-r from-transparent via-border to-transparent
+             lg:block"
+    ></div>
+
+    {
+      flow.steps.map((step, index) => (
+        <li
+          class:list={[
+            `group relative border-l border-border/60
+             pb-10 pl-8 last:pb-0
+             lg:border-l-0 lg:pb-0 lg:pl-0`,
+            index !== flow.steps.length - 1 &&
+              "lg:border-r lg:border-border/60 lg:pr-6",
+            index !== 0 && "lg:pl-6",
+          ]}
+        >
+          <div
+            class="absolute -left-[0.3rem] top-0 h-2.5 w-2.5
+                   rounded-full bg-cyan
+                   transition-transform duration-300
+                   group-hover:scale-125
+                   lg:relative lg:left-auto lg:top-auto lg:z-10
+                   lg:mb-10 lg:h-10 lg:w-10
+                   lg:border lg:border-cyan/40
+                   lg:bg-surface lg:shadow-none"
+          >
+            <span
+              class="hidden h-full w-full items-center justify-center
+                     font-mono text-[0.65rem] text-cyan lg:flex"
+            >
+              {String(index + 1).padStart(2, "0")}
+            </span>
+          </div>
+
+          <span class="font-mono text-xs tracking-[0.18em] text-cyan lg:hidden">
+            {String(index + 1).padStart(2, "0")}
+          </span>
+
+          <h3 class="mt-3 font-display text-xl font-medium text-text lg:mt-0">
+            {step.title}
+          </h3>
+
+          <p class="mt-3 text-sm leading-6 text-text-muted">
+            {step.description}
+          </p>
+        </li>
+      ))
+    }
+  </ol>
+</Section>

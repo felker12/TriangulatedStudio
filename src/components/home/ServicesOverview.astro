@@ -9,61 +9,84 @@ import SectionHeader from "@components/ui/SectionHeader.astro";
 const services = [
   {
     number: "01",
-    title: "Web Design & Development",
+    title: "Websites",
     description:
-      "Fast, focused websites that connect strong visual design with thoughtful technical execution.",
+      "Thoughtfully designed and carefully engineered websites built for growing businesses.",
     icon: "mdi:monitor-cellphone",
-    href: "/services/web-design-development",
+    href: "/services#website-packages",
   },
   {
     number: "02",
-    title: "Brand Identity",
+    title: "Custom Software",
     description:
-      "Cohesive visual systems that help businesses communicate clearly and remain recognizable.",
-    icon: "mdi:vector-triangle",
-    href: "/services/brand-identity",
+      "Purpose-built applications, dashboards, internal tools, APIs, and integrations shaped around real operational needs.",
+    icon: "mdi:code-braces",
+    href: "/services#custom-development",
   },
   {
     number: "03",
-    title: "Custom Software",
+    title: "Ongoing Support",
     description:
-      "Purpose-built applications, internal tools, APIs, and prototypes designed around real operational needs.",
-    icon: "mdi:code-braces",
-    href: "/services/custom-software",
+      "Maintenance, content updates, technical monitoring, and continued improvements after launch.",
+    icon: "mdi:tools",
+    href: "/services#ongoing-support",
   },
 ];
 ---
 
-<Section labelledBy="services-title" background="midnight" borderTop borderBottom>
+<Section
+  id="services-overview"
+  labelledBy="services-title"
+  background="midnight"
+  borderTop
+  borderBottom
+>
   <div class="grid gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:gap-20">
     <div>
       <SectionHeader
         id="services-title"
         eyebrow="What we do"
-        title="Connected disciplines."
-        muted="One focused studio."
+        title="Focused services."
+        muted="Built around real needs."
         mutedBlock
-        description="Strategy, design, and technology work best when they are considered together. Every project is approached as one connected system."
+        description="Triangulated Studio focuses on websites, custom software, and ongoing support delivered through one connected design and development process."
         maxWidth="max-w-lg"
       />
 
-      <LinkButton href="/services" label="Explore services" />
+      <LinkButton
+        href="/services"
+        label="Explore services"
+        variant="secondary"
+      />
     </div>
 
-    <div class="border-t border-white/8">
+    <div class="border-t border-border/60">
       {
         services.map((service) => (
-          <article class="group grid gap-5 border-b border-white/8 py-8 sm:grid-cols-[3rem_3.5rem_1fr_auto] sm:items-start sm:gap-6">
+          <article
+            class="group grid gap-5 border-b border-border/60 py-8
+                   sm:grid-cols-[3rem_3.5rem_1fr_auto]
+                   sm:items-start sm:gap-6"
+          >
             <span class="font-mono text-xs tracking-[0.16em] text-cyan">
               {service.number}
             </span>
 
-            <div class="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 text-text-muted transition-colors duration-200 group-hover:border-cyan/40 group-hover:text-cyan">
+            <div
+              class="flex h-11 w-11 items-center justify-center
+                     rounded-full border border-border/60
+                     text-text-muted transition-colors duration-200
+                     group-hover:border-cyan/40
+                     group-hover:text-cyan"
+            >
               <Icon name={service.icon} size={21} />
             </div>
 
             <div>
-              <h3 class="font-display text-xl font-medium text-text sm:text-2xl">
+              <h3
+                class="font-display text-xl font-medium text-text
+                       sm:text-2xl"
+              >
                 {service.title}
               </h3>
 

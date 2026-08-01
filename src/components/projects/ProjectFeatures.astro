@@ -1,0 +1,52 @@
+---
+import Section from "@components/ui/Section.astro";
+import SectionHeader from "@components/ui/SectionHeader.astro";
+
+import type { ProjectFeature } from "@data/projects/projectDetails";
+
+interface Props {
+  projectTitle: string;
+  features: ProjectFeature[];
+}
+
+const { projectTitle, features } = Astro.props;
+---
+
+<Section
+  id="project-features"
+  labelledBy="project-features-title"
+  background="default"
+>
+  <SectionHeader
+    id="project-features-title"
+    eyebrow="Key features"
+    title="What the project"
+    muted="needed to accomplish."
+    description={`Core capabilities delivered for ${projectTitle}.`}
+    maxWidth="max-w-3xl"
+  />
+
+  <div class="mt-14 grid border-l border-t border-border/60 md:grid-cols-2 lg:grid-cols-3">
+    {
+      features.map((feature, index) => (
+        <article
+          class="min-h-64 border-b border-r border-border/60
+                 p-7 transition-colors duration-200
+                 hover:bg-white/[0.02] sm:p-8"
+        >
+          <span class="font-mono text-xs tracking-[0.16em] text-cyan">
+            {String(index + 1).padStart(2, "0")}
+          </span>
+
+          <h3 class="mt-8 font-display text-2xl font-medium tracking-tight text-text">
+            {feature.title}
+          </h3>
+
+          <p class="mt-4 leading-7 text-text-muted">
+            {feature.description}
+          </p>
+        </article>
+      ))
+    }
+  </div>
+</Section>
