@@ -14,7 +14,7 @@ export const engineeringProjects: EngineeringProject[] = [
       "A full-stack timekeeping application focused on secure authentication, API design, caching, and maintainable service architecture.",
     type: "personal",
     status: "In development",
-    technologies: [".NET Aspire", "ASP.NET Core", "React", "Redis"],
+    technologies: [".NET Aspire", "ASP.NET Core", "React", "C#"],
     href: "/projects/timepunch",
   },
   {
