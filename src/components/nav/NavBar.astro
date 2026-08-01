@@ -99,7 +99,7 @@ const currentPath = Astro.url.pathname;
             {hasChildren && (
               <ProjectDropdown
                 pathname={currentPath}
-                projectLinks={link.children ?? []}
+                projectGroups={link.children ?? []}
               />
             )}
           </li>
