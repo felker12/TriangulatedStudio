@@ -1,4 +1,4 @@
-// src/data/projects/details/timePunch.ts
+// src/data/projects/timePunch.ts
 
 import type { ProjectDetail } from "@data/projects/projectDetails";
 

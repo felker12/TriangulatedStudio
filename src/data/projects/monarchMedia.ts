@@ -1,4 +1,4 @@
-// src/data/projects/details/monarchMedia.ts
+// src/data/projects/monarchMedia.ts
 
 import type { ProjectDetail } from "@data/projects/projectDetails";
 

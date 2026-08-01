@@ -8,6 +8,7 @@ import { qualityLandscapeProject } from "@data/projects/qualityLandscape";
 import { rpgEngineProject } from "@data/projects/rpgEngine";
 import { southardHomesProject } from "@data/projects/southardHomes";
 import { timePunchProject } from "@data/projects/timePunch";
+import { anthonyFelkerProject } from "@data/projects/anthonyfelker";
 
 export type { ProjectDetail } from "@data/projects/projectDetails";
 
@@ -18,6 +19,7 @@ export {
   rpgEngineProject,
   southardHomesProject,
   timePunchProject,
+  anthonyFelkerProject,
 };
 
 export const projectDetails: ProjectDetail[] = [
@@ -27,6 +29,7 @@ export const projectDetails: ProjectDetail[] = [
   timePunchProject,
   portfolioGeneratorProject,
   rpgEngineProject,
+  anthonyFelkerProject,
 ];
 
 export function getProjectDetail(slug: string): ProjectDetail | undefined {

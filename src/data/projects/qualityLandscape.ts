@@ -1,4 +1,4 @@
-// src/data/projects/details/qualityLandscape.ts
+// src/data/projects/qualityLandscape.ts
 
 import type { ProjectDetail } from "@data/projects/projectDetails";
 

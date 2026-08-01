@@ -1,4 +1,4 @@
-// src/data/projects/details/rpgEngine.ts
+// src/data/projects/rpgEngine.ts
 
 import type { ProjectDetail } from "@data/projects/projectDetails";
 

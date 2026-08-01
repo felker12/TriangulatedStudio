@@ -3,6 +3,7 @@
 import type { ImageMetadata } from "astro";
 import type { PackageId } from "@data/services/packages";
 
+import personalPortfolioImage from "@assets/projects/portfolio/home.png";
 import monarchMediaImage from "@assets/projects/monarch-media/admin.png";
 import southardHomesImage from "@assets/projects/southard-homes/home.png";
 import qualityLandscapeImage from "@assets/projects/quality-landscape/home.png";
@@ -41,6 +42,39 @@ export interface CompletedProject {
 }
 
 export const completedProjects: CompletedProject[] = [
+  {
+    slug: "anthony-felker",
+    title: "AnthonyFelker.com",
+    summary:
+      "A personal portfolio designed to present software engineering, web development, professional experience, and technical projects through a polished, performance-focused interface.",
+    category: "Personal portfolio",
+
+    packageId: "custom-website",
+
+    section: "professional",
+    type: "personal",
+
+    role: "Designer & Developer",
+    attribution: "Designed and developed independently.",
+    employer: "Triangulated Studio",
+
+    year: 2026,
+
+    technologies: [
+      "Astro",
+      "TypeScript",
+      "Tailwind CSS",
+      "Three.js",
+      "Netlify",
+    ],
+
+    image: personalPortfolioImage,
+    imageAlt:
+      "AnthonyFelker.com personal portfolio displayed on a desktop screen",
+
+    featured: true,
+  },
+
   {
     slug: "monarch-media",
     title: "Monarch Media",

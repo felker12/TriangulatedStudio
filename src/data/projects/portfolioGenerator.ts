@@ -1,4 +1,4 @@
-// src/data/projects/details/portfolioGenerator.ts
+// src/data/projects/portfolioGenerator.ts
 
 import type { ProjectDetail } from "@data/projects/projectDetails";
 

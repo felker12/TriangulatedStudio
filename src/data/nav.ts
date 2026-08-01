@@ -30,6 +30,11 @@ export const navLinks: NavLink[] = [
         label: "Professional Work",
         links: [
           {
+            href: "/portfolio/anthony-felker",
+            label: "AnthonyFelker.com",
+            ariaLabel: "View the AnthonyFelker.com portfolio project",
+          },
+          {
             href: "/portfolio/monarch-media",
             label: "Monarch Media",
             ariaLabel: "View the Monarch Media project",
