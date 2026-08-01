@@ -3,9 +3,9 @@
 import type { ImageMetadata } from "astro";
 import type { PackageId } from "@data/services/packages";
 
-import monarchMediaImage from "@assets/projects/monarch-media.png";
-import southardHomesImage from "@assets/projects/southard-homes.png";
-import qualityLandscapeImage from "@assets/projects/quality-landscape.png";
+import monarchMediaImage from "@assets/projects/monarch-media/admin.png";
+import southardHomesImage from "@assets/projects/southard-homes/home.png";
+import qualityLandscapeImage from "@assets/projects/quality-landscape/home.png";
 
 import timePunchImage from "@assets/projects/timepunch/dash.png";
 import portfolioGeneratorImage from "@assets/projects/portfolio-generator/home.png";

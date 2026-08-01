@@ -45,16 +45,22 @@ export const southardHomesProject: ProjectDetail = {
       alt: "Southard Homes homes-for-sale page",
     },
     {
-      src: `${screenshotRoot}listing.png`,
+      src: `${screenshotRoot}floorplans.png`,
       width: 1920,
       height: 1080,
-      alt: "Southard Homes property-listing page",
+      alt: "Southard Homes floorplans page",
     },
     {
       src: `${screenshotRoot}contact.png`,
       width: 1920,
       height: 1080,
       alt: "Southard Homes contact page",
+    },
+    {
+      src: `${screenshotRoot}about.png`,
+      width: 1920,
+      height: 1080,
+      alt: "Southard Homes about page",
     },
   ],
 

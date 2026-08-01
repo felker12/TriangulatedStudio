@@ -57,6 +57,12 @@ export const qualityLandscapeProject: ProjectDetail = {
       height: 1080,
       alt: "Quality Landscape and Leisure contact page",
     },
+    {
+      src: `${screenshotRoot}about.png`,
+      width: 1920,
+      height: 1080,
+      alt: "Quality Landscape and Leisure about page",
+    },
   ],
 
   overview: [
